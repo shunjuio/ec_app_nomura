@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  app:
+    command: sleep infinity
+    volumes:
+      - vscode-extension-volume:/root/.vscode-server/extensions
+      - solargraph-volume:/root/.solargraph
+volumes:
+  vscode-extension-volume: {}
+  solargraph-volume: {}
