@@ -19,6 +19,12 @@
   margin: auto;
 }
 
+.back-btn {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
 /* reset.css */
 body {
   margin: 0;
