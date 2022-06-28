@@ -1,0 +1,48 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+header {
+  background-color: #ac7c40;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    width: 50%;
+    padding: 10px;
+  }
+
+  .list {
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.top-page {
+  h1 {
+    text-align: center;
+    padding: 25px 0;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.main-area {
+  display: flex;
+  margin: 75px 0 0 0;
+
+  .aside {
+    width: 30%;
+  }
+
+  .product-list {
+    width: 70%;
+
+    h2 {
+      text-align: center;
+    }
+  }
+}

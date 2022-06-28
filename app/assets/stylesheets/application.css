@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+.container {
+  width: 920px;
+  margin: auto;
+}
+
+/* reset.css */
+body {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  background-color: transparent;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
