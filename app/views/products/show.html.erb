@@ -11,8 +11,14 @@
     <p><strong>アルコール度数：</strong><%= @product.alcohol %></p>
     <p><strong>価格：</strong><%= @product.price %>円</p>
     <label for="">数量</label>
-    <input type="number">
-    <button><%= link_to("カートに入れる", "#") %></button>
+    <%= form_with(url: "/cart/create") do |form| %>
+      <%= form.number_field :quantity %>
+      <%= form.hidden_field :product_id, value: @product.id %>
+      <% if session[:member_id] %>
+        <%= form.hidden_field :member_id, value: session[:member_id] %>
+      <% end %>
+      <%= form.submit "カートに入れる" %>
+    <% end %>
   </div>
 </div>
 

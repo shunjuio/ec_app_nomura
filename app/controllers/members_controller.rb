@@ -19,6 +19,20 @@ class MembersController < ApplicationController
   def edit
   end
 
+  # login/logout
+  def login
+    @member = Member.find_by(email: params[:email], password: params[:password])
+    if @member
+      session[:member_id] = @member.id
+      redirect_to root_path #あとでマイページへ変える
+    end
+  end
+
+  def logout
+    session[:member_id] = nil
+    redirect_to root_path
+  end
+
   # POST /members or /members.json
   def create
     @member = Member.new(member_params)
@@ -58,13 +72,14 @@ class MembersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_member
-      @member = Member.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def member_params
-      params.require(:member).permit(:last_name, :first_name, :email, :password)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_member
+    @member = Member.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def member_params
+    params.require(:member).permit(:last_name, :first_name, :email, :password)
+  end
 end

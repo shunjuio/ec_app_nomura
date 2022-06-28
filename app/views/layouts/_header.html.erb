@@ -4,9 +4,15 @@
       <h1><%= link_to("whisky", root_path) %></h1>
     </div>
     <ul class="list">
-      <li>signup</li>
-      <li>login</li>
-      <li>cart</li>
+      <% if session[:member_id] %>
+        <li>ようこそ<%= @member[:last_name] %>様</li>
+        <li><%= link_to("cart", "cart/index") %></li>
+        <li><%= link_to("logout", "/members/logout", {method: :post}) %></li>
+      <% else %>
+        <li><%= link_to("signup", "/members/new") %></li>
+        <li><%= link_to("login", "/members/login") %></li>
+        <li><%= link_to("cart", "cart/index") %></li>
+      <% end %>
     </ul>
   </div>
 </header>

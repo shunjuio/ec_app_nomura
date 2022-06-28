@@ -1,0 +1,20 @@
+<h1>Login Member</h1>
+
+<%= form_with do |form| %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "login" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', root_path %>
