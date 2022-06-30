@@ -39,4 +39,4 @@ vendor/bundle
 .env
 
 # db設計図
-/ecapp.drawio.svg
+# /ecapp.drawio.svg
