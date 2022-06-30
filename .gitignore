@@ -37,3 +37,6 @@ yarn-debug.log*
 
 vendor/bundle
 .env
+
+# db設計図
+/ecapp.drawio.svg

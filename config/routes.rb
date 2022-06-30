@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   post "members/login" => "members#login"
   post "members/logout" => "members#logout"
   get "cart/index"
-  # post "products/:id" => "cart#create"
   post "cart/create" => "cart#create"
+  post "cart/:member_id/:product_id/destroy" => "cart#destroy"
   root "home#top"
   resources :products
   resources :members

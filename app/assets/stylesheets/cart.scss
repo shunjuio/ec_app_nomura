@@ -1,3 +1,48 @@
 // Place all the styles related to the cart controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.cart-title {
+  text-align: center;
+  margin: 75px 0;
+}
+
+.cart-list {
+  .item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    padding: 15px 0;
+
+    img {
+      display: block;
+      width: 100px;
+      height: auto;
+    }
+
+    p {
+      font-size: 17.5px;
+    }
+  }
+
+  .total-price {
+    margin: 10px 0 75px 0;
+    text-align: right;
+    p {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
+
+.buy-btn {
+  margin-bottom: 75px;
+
+  button {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 50px;
+    box-sizing: border-box;
+  }
+}
