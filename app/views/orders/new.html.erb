@@ -58,6 +58,8 @@
         <div class="item">
           <% @index += 1 %>
           <p><%= @index %></p>
+          <%# product_idをparams変数に格納 %>
+          <%= form.hidden_field :product_id, value: cart.product.id %>
           <img src="<%= "/product_images/#{cart.product.image_path} "%>" alt="商品画像">
           <p><%= cart.product.name %></p>
           <p><%= cart.product.price.to_s(:delimited) %>円</p>
