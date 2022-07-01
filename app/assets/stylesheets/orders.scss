@@ -1,3 +1,25 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.ordered_product {
+  .cart-list {
+    .item {
+      p {
+        font-size: 12.5px;
+      }
+
+      img {
+        width: 75px;
+        height: auto;
+      }
+    }
+  }
+  .total-price {
+    p {
+      font-size: 15px;
+      font-weight: normal;
+      text-align: center;
+    }
+  }
+}

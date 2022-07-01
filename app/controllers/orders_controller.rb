@@ -13,6 +13,13 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @member = Member.find_by(id: session[:member_id])
+    @carts = Cart.where(member_id: @member[:id]).includes(:product)
+    @index = 0
+    total_prices = @carts.map do |cart|
+      cart.product.price * cart.quantity
+    end
+    @total_price = total_prices.sum.to_s(:delimited)
+    @total_quantity = @carts.sum(:quantity)
     @order = Order.new
   end
 

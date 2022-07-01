@@ -27,56 +27,77 @@
   <div class="shipping">
     <h3>配送先</h3>
     <div class="field">
-      <%= form.label :member_shipping_address, "自宅" %>
-      <%= form.check_box :member_shipping_address %>
+      <%= form.label :shipping_address_name, "自宅" %>
+      <%= form.radio_button :shipping_address_name, 1 %>
     </div>
 
     <div class="field">
-      <%= form.label :member_postal_code, "〒:郵便番号" %>
-      <%= form.number_field :member_postal_code %>
+      <%= form.label :postal_code, "〒:郵便番号" %>
+      <%= form.number_field :postal_code %>
     </div>
 
     <div class="field">
-      <%= form.label :member_shipping_address, "住所" %>
-      <%= form.text_field :member_shipping_address %>
+      <%= form.label :shipping_address, "住所" %>
+      <%= form.text_field :shipping_address %>
     </div>
+  </div>
 
+  <div class="payment">
+    <h3>決済方法</h3>
     <div class="field">
-      <%= form.label :member_shipping_address_name, "配送先" %>
-      <%= form.text_field :member_shipping_address %>
+      <%= form.label :payment_method, "クレジットカード" %>
+      <%= form.radio_button :payment_method, 1 %>
+      <%= form.label :payment_method, "電子マネー" %>
+      <%= form.radio_button :payment_method, 2 %>
+      <%= form.label :payment_method, "代金引換" %>
+      <%= form.radio_button :payment_method, 3 %>
+      <%= form.label :payment_method, "請求書払" %>
+      <%= form.radio_button :payment_method, 4 %>
+    </div>
+  </div>
+
+  <div class="ordered_product">
+    <h3>注文商品</h3>
+    <div class="cart-list">
+      <% @carts.each do |cart| %>
+        <div class="item">
+          <% @index += 1 %>
+          <p><%= @index %></p>
+          <img src="<%= "/product_images/#{cart.product.image_path} "%>" alt="商品画像">
+          <p><%= cart.product.name %></p>
+          <p><%= cart.product.price.to_s(:delimited) %>円</p>
+          <p>数量：<%= cart.quantity %></p>
+          <p>小計：<%= (cart.product.price * cart.quantity).to_s(:delimited) %>円</p>
+        </div>
+      <% end %>
+
+      <div class="total-price">
+        <p>合計数量：<%= @total_quantity %>
+          個</p>
+        <p>合計金額：<%= @total_price %>
+          円</p>
+      </div>
     </div>
   </div>
 
   <div class="postage">
     <h3>送料</h3>
     <div class="field">
-      <%= form.label :postage %>
+      <%= form.label :postage, "送料" %>
       <%= form.number_field :postage %>
     </div>
   </div>
 
-  <div class="field">
-    <%= form.label :amount_billed %>
-    <%= form.number_field :amount_billed %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payment_method %>
-    <%= form.number_field :payment_method %>
-  </div>
-
-  <div class="field">
-    <%= form.label :shipping_address %>
-    <%= form.text_field :shipping_address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :postal_code %>
-    <%= form.number_field :postal_code %>
+  <div class="amount-billed">
+    <h3>請求額</h3>
+    <div class="field">
+      <%= form.label :amount_billed, "請求額" %>
+      <%= form.number_field :amount_billed %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "購入確定" %>
   </div>
 <% end %>
 
