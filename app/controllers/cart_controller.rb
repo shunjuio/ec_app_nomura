@@ -6,7 +6,7 @@ class CartController < ApplicationController
     total_prices = @carts.map do |cart|
       cart.product.price * cart.quantity
     end
-    @total_price = total_prices.sum.to_s(:delimited)
+    @total_price = total_prices.sum
     @total_quantity = @carts.sum(:quantity)
   end
 

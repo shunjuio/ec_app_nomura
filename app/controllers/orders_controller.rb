@@ -4,10 +4,12 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = Order.all
+    @member = Member.find_by(id: session[:member_id])
   end
 
   # GET /orders/1 or /orders/1.json
   def show
+    @member = Member.find_by(id: session[:member_id])
   end
 
   # GET /orders/new
@@ -18,13 +20,16 @@ class OrdersController < ApplicationController
     total_prices = @carts.map do |cart|
       cart.product.price * cart.quantity
     end
-    @total_price = total_prices.sum.to_s(:delimited)
+    @total_price = total_prices.sum
     @total_quantity = @carts.sum(:quantity)
+    @postage = 500
+    @amount_billed = @total_price + @postage
     @order = Order.new
   end
 
   # GET /orders/1/edit
   def edit
+    @member = Member.find_by(id: session[:member_id])
   end
 
   # POST /orders or /orders.json
@@ -74,6 +79,6 @@ class OrdersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def order_params
-    params.require(:order).permit(:member_id, :postage, :amount_billed, :payment_method, :shipping_address, :postal_code)
+    params[:order].permit(:member_id, :postage, :amount_billed, :payment_method, :shipping_address, :postal_code, :purchaser_last_name, :purchaser_first_name, :purchaser_email)
   end
 end

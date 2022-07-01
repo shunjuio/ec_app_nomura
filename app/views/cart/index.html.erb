@@ -17,7 +17,7 @@
   <div class="total-price">
     <p>合計数量：<%= @total_quantity %>
       個</p>
-    <p>合計金額：<%= @total_price %>
+    <p>合計金額：<%= @total_price.to_s(:delimited) %>
       円</p>
   </div>
 </div>
