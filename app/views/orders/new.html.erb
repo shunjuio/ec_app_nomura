@@ -1,0 +1,83 @@
+<h1>注文確認</h1>
+
+<%= form_with(url: "/orders/create") do |form| %>
+
+  <div class="purchaser">
+    <h3>注文者情報</h3>
+    <div class="field">
+      <%= form.hidden_field :member_id, value: @member[:id] %>
+    </div>
+
+    <div class="field">
+      <%= form.label :purchaser_last_name, "姓" %>
+      <%= form.text_field :purchaser_last_name, value: @member[:last_name] %>
+    </div>
+
+    <div class="field">
+      <%= form.label :purchaser_first_name, "名" %>
+      <%= form.text_field :purchaser_first_name, value: @member[:first_name] %>
+    </div>
+
+    <div class="field">
+      <%= form.label :purchaser_email, "email" %>
+      <%= form.text_field :purchaser_email, value: @member[:email] %>
+    </div>
+  </div>
+
+  <div class="shipping">
+    <h3>配送先</h3>
+    <div class="field">
+      <%= form.label :member_shipping_address, "自宅" %>
+      <%= form.check_box :member_shipping_address %>
+    </div>
+
+    <div class="field">
+      <%= form.label :member_postal_code, "〒:郵便番号" %>
+      <%= form.number_field :member_postal_code %>
+    </div>
+
+    <div class="field">
+      <%= form.label :member_shipping_address, "住所" %>
+      <%= form.text_field :member_shipping_address %>
+    </div>
+
+    <div class="field">
+      <%= form.label :member_shipping_address_name, "配送先" %>
+      <%= form.text_field :member_shipping_address %>
+    </div>
+  </div>
+
+  <div class="postage">
+    <h3>送料</h3>
+    <div class="field">
+      <%= form.label :postage %>
+      <%= form.number_field :postage %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_billed %>
+    <%= form.number_field :amount_billed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_method %>
+    <%= form.number_field :payment_method %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shipping_address %>
+    <%= form.text_field :shipping_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postal_code %>
+    <%= form.number_field :postal_code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', "/cart/index" %>

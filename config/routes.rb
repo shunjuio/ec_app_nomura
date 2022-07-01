@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "cart/create" => "cart#create"
   post "cart/:member_id/:product_id/destroy" => "cart#destroy"
   root "home#top"
+  resources :orders
   resources :products
   resources :members
 end
