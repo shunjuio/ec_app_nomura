@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
   # GET /orders/1 or /orders/1.json
   def show
     @member = Member.find_by(id: session[:member_id])
+    @order_products = OrderProduct.where(order_id: @order.id).includes(:product)
+    @index = 0
   end
 
   # GET /orders/new
@@ -40,7 +42,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
+        format.html { redirect_to order_url(@order), notice: "ご購入ありがとうございました" }
         format.json { render :show, status: :created, location: @order }
         # order_productへ商品と個数を登録して、cartから商品を削除する処理を書く
         @carts.each do |cart|

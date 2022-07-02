@@ -2,24 +2,200 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.ordered_product {
-  .cart-list {
-    .item {
-      p {
-        font-size: 12.5px;
+// newページ
+.order {
+  margin-bottom: 100px;
+  h1 {
+    margin: 50px 0;
+    text-align: center;
+  }
+
+  .field {
+    display: flex;
+
+    label {
+      font-size: 17.5px;
+      line-height: 25px;
+    }
+
+    input {
+      width: 200px;
+      height: 25px;
+    }
+  }
+
+  .purchaser {
+    margin: 75px 0;
+    h2 {
+      margin: 25px 0;
+    }
+
+    .field {
+      label {
+        width: 75px;
+      }
+    }
+
+    .purchaser-name {
+      display: flex;
+      gap: 50px;
+    }
+  }
+
+  .shipping {
+    h2 {
+      margin: 25px 0;
+    }
+
+    .field {
+      label {
+        width: 55px;
       }
 
-      img {
-        width: 75px;
-        height: auto;
+      input {
+        width: 500px;
+      }
+
+      .postal-code {
+        width: 100px;
       }
     }
   }
-  .total-price {
+
+  .payment {
+    margin: 75px 0;
+
+    h2 {
+      margin: 25px 0;
+    }
+
+    .field {
+      width: 600px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+
+      li {
+        display: flex;
+      }
+
+      label {
+        font-size: 15px;
+        line-height: 15px;
+      }
+
+      input {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  .ordered_product {
+    .cart-list {
+      .item {
+        p {
+          font-size: 15px;
+        }
+
+        img {
+          width: 75px;
+          height: auto;
+        }
+      }
+    }
+    .total-price {
+      p {
+        font-size: 15px;
+        font-weight: normal;
+        text-align: center;
+      }
+    }
+  }
+
+  .postage {
+    margin: 75px 0 0 0;
+  }
+
+  .actions {
+    margin: 75px auto;
+    text-align: center;
+
+    input {
+      display: inline-block;
+      width: 100px;
+      height: 50px;
+      font-size: 17.5px;
+    }
+  }
+
+  .back-btn {
+    text-align: center;
+    font-size: 20px;
+    margin: 30px 0;
+  }
+}
+
+// showページ
+.order-complete {
+  h1 {
+    text-align: center;
+    margin: 75px 0;
+  }
+
+  p {
+    font-size: 25px;
+  }
+
+  .buy-date {
+    text-align: right;
+    font-size: 15px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .order-list {
+    .item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 40px;
+      padding: 15px 0;
+
+      img {
+        display: block;
+        width: 100px;
+        height: auto;
+      }
+
+      p {
+        font-size: 17.5px;
+      }
+    }
+  }
+
+  .payment-info {
+    margin: 50px 0;
     p {
-      font-size: 15px;
-      font-weight: normal;
-      text-align: center;
+      font-size: 20px;
+      margin: 25px 0;
+    }
+  }
+
+  .shipping {
+    margin: 50px 0;
+    p {
+      font-size: 20px;
+      margin: 15px 0;
+    }
+  }
+
+  .delivary-date {
+    margin: 50px 0;
+    p {
+      font-size: 20px;
     }
   }
 }
