@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do |n|
+  #Fakerの名前が、"firstname lastname"の形式で返ってくるので、splitで分割して配列にする.
+  name = Faker::Name.name.split(" ")
+
+  Member.create!(
+    last_name: name[1],
+    first_name: name[0],
+    email: "email#{n + 1}@example.com",
+    password: "password"
+  )
+end
