@@ -14,6 +14,8 @@ class CartController < ApplicationController
     @cart = Cart.new
   end
 
+  def show ; end
+
   def create
     carts = Cart.where(member_id: session[:member_id])
     if carts.find_by(product_id: params[:product_id])
