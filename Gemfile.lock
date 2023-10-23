@@ -89,6 +89,8 @@ GEM
     e2mmap (0.1.0)
     erb-formatter (0.3.0)
     erubi (1.10.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -265,6 +267,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   debase
   erb-formatter
+  faker
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
