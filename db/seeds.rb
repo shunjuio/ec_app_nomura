@@ -17,3 +17,18 @@
     password: "password"
   )
 end
+
+product_name = ["アバフェルディ", "シーバルリーバス", "グレンフィデック", "響", "ハイランドパーク", "ジャックダニエル", "ジョニーウォーカー", "マッカラン", "タリスカー", "山崎"]
+product_images = ["aberfeldy", "chivasregal", "glenfiddich", "hibiki", "highlandpark", "jackdaniels", "johnniewollker", "macllan", "talisker", "yamazaki"]
+product_area = ["イギリス", "スコットランド", "イギリス", "日本", "イギリス", "アメリカ", "アメリカ", "イギリス", "イギリス", "日本"]
+
+10.times do |n|
+  Product.create!(
+    name: product_name[n],
+    price: 4000 + n * 100,
+    alcohol: 40,
+    image_path: "#{product_images[n]}.jpg",
+    material: "モルト",
+    product_area: "#{product_area[n]}"
+  )
+end
