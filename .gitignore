@@ -40,3 +40,6 @@ vendor/bundle
 
 # db設計図
 # /ecapp.drawio.svg
+
+# Ignore Rubymine files
+.idea/
