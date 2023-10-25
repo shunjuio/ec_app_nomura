@@ -11,8 +11,6 @@ class Members::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    #ヘッダーにログイン中のユーザー名を表示させるための記述
-    session[:member_id] = @member.id
   end
 
   # DELETE /resource/sign_out
