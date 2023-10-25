@@ -17,17 +17,26 @@
   )
 end
 
-product_name = ["アバフェルディ", "シーバルリーバス", "グレンフィデック", "響", "ハイランドパーク", "ジャックダニエル", "ジョニーウォーカー", "マッカラン", "タリスカー", "山崎"]
-product_images = ["aberfeldy", "chivasregal", "glenfiddich", "hibiki", "highlandpark", "jackdaniels", "johnniewa  lker", "macallan", "talisker", "yamazaki"]
-product_area = ["イギリス", "スコットランド", "イギリス", "日本", "イギリス", "アメリカ", "アメリカ", "イギリス", "イギリス", "日本"]
+products = [{name: "アルバータプレミアム", price: 1720,  alcohol: "40%", image_path: "/product_images/albertapremium.png", material: "シングルモルト", product_area: "カナダ"},
+            {name: "ブッシュミルズ",      price: 2355,  alcohol: "40%", image_path: "/product_images/bushmills.png",      material: "シングルモルト", product_area: "イギリス"},
+            {name: "カナディアンクラブ",   price: 1649, alcohol: "40%",  image_path: "/product_images/canadianclub.png",   material: "シングルモルト",  product_area: "カナダ"},
+            {name: "知多",              price: 5380,  alcohol: "43%", image_path: "/product_images/chita.png",          material: "シングルモルト",  product_area: "日本"},
+            {name: "アーリータイムズ",    price: 6780,  alcohol: "40%", image_path: "/product_images/earlytimes.png",     material: "シングルモルト",  product_area: "アメリカ"},
+            {name: "フェイマスグラウス",   price: 2800, alcohol: "40%",  image_path: "/product_images/famousgrouse.png",   material: "シングルモルト",  product_area: "イギリス"},
+            {name: "フォアローゼズ",     price: 2003,   alcohol: "40%", image_path: "/product_images/fourroses.png",      material: "シングルモルト",  product_area: "アメリカ"},
+            {name: "グレンフィディック",  price: 4382,  alcohol: "40%",  image_path: "/product_images/glenfiddich.png",    material: "シングルモルト",  product_area: "イギリス"},
+            {name: "白州",              price: 12100, alcohol: "43%",  image_path: "/product_images/hakushu.png",         material: "シングルモルト",  product_area: "日本"},
+            {name: "響",               price: 15987,  alcohol: "43%", image_path: "/product_images/hibiki.png",         material: "シングルモルト",   product_area: "日本"},
+            {name: "I.W.ハーパー",      price: 2179,   alcohol: "40%", image_path: "/product_images/i.w.harper.png",    material: "シングルモルト",   product_area: "アメリカ"},
+            {name: "ジャックダニエル",   price: 3170,  alcohol: "40%",  image_path: "/product_images/jackdaniel's.png",    material: "シングルモルト",  product_area: "アメリカ"}]
 
-10.times do |n|
+products.each do |product|
   Product.create!(
-    name: product_name[n],
-    price: 4000 + n * 100,
-    alcohol: "40%",
-    image_path: "#{product_images[n]}.jpg",
-    material: "モルト",
-    product_area: "#{product_area[n]}"
+    name: product[:name],
+    price: product[:price],
+    alcohol: product[:alcohol],
+    image_path: product[:image_path],
+    material: product[:material],
+    product_area: product[:product_area]
   )
 end
