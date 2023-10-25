@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @member = Member.find_by(id: session[:member_id])
+    @member = Member.find_by(id: current_member.id)
     # @member[:last_name] = "test"
   end
 

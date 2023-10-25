@@ -6,7 +6,7 @@
     <ul class="list">
       <% if current_member %>
         <li>ようこそ<%= current_member.last_name %>様</li>
-        <li><%= link_to("mypage", "/members/#{session[:member_id]}/edit") %></li>
+        <li><%= link_to("mypage", "/members/#{current_member.id}/edit") %></li>
         <li><%= link_to("cart", "/cart/index") %></li>
         <li><%= link_to("logout", "/members/logout", {method: :post}) %></li>
       <% else %>
