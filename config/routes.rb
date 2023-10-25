@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :members
   get "members/login" => "members#login"
   post "members/login" => "members#login"
   post "members/logout" => "members#logout"
