@@ -70,8 +70,10 @@ header {
         box-sizing: border-box;
         // border: #ac7c40 1px solid;
         background-color: #fff;
+        width: 200px;
+        text-align: center;
 
-        img {
+        .index-image-size {
           width: 200px;
           height: auto;
         }

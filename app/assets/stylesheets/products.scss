@@ -7,9 +7,10 @@
   margin-top: 100px;
 
   .item-img {
-    img {
-      width: 500px;
+    .show-image-size {
+      width: 400px;
       height: auto;
+      padding-right: 20px;
     }
   }
 

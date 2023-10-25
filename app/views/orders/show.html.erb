@@ -12,10 +12,11 @@
       <div class="item">
         <% @index += 1 %>
         <p><%= @index %></p>
-        <img
-          src="<%= "/product_images/#{order_product.product.image_path} "%>"
-          alt="商品画像"
-        >
+<!--        <img-->
+<!--          src="<%#= "/product_images/#{order_product.product.image_path} "%>"-->
+<!--          alt="商品画像"-->
+<!--        >-->
+        <%= image_tag order_product.product.image_path, alt: "商品画像", class: "after-ordered-image-size" %>
         <p><%= order_product.product.name %></p>
         <p><%= order_product.product.price.to_s(:delimited) %>円</p>
         <p>数量：<%= order_product.quantity %></p>

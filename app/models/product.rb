@@ -7,4 +7,6 @@ class Product < ApplicationRecord
   validates :image_path, { presence: true }
   validates :material, { presence: true }
   validates :product_area, { presence: true }
+
+  scope :latest , -> { order(:id) }
 end
