@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_01_232451) do
-
+ActiveRecord::Schema[7.1].define(version: 2022_07_01_232451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,8 +18,8 @@ ActiveRecord::Schema.define(version: 2022_07_01_232451) do
     t.bigint "product_id", null: false
     t.bigint "member_id"
     t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_carts_on_member_id"
     t.index ["product_id"], name: "index_carts_on_product_id"
   end
@@ -30,16 +29,16 @@ ActiveRecord::Schema.define(version: 2022_07_01_232451) do
     t.string "first_name"
     t.string "email"
     t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_products", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
     t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
@@ -51,8 +50,8 @@ ActiveRecord::Schema.define(version: 2022_07_01_232451) do
     t.integer "payment_method"
     t.string "shipping_address"
     t.integer "postal_code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "purchaser_last_name"
     t.string "purchaser_first_name"
     t.string "purchaser_email"
@@ -66,8 +65,8 @@ ActiveRecord::Schema.define(version: 2022_07_01_232451) do
     t.string "image_path"
     t.string "material"
     t.string "product_area"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "carts", "members"
