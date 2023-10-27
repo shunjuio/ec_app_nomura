@@ -16,7 +16,7 @@
 <!--          src="<%#= "/product_images/#{order_product.product.image_path} "%>"-->
 <!--          alt="商品画像"-->
 <!--        >-->
-        <%= image_tag order_product.product.image_path, alt: "商品画像", class: "after-ordered-image-size" %>
+        <%= image_tag order_product.product.image_path, alt: "商品画像" %>
         <p><%= order_product.product.name %></p>
         <p><%= order_product.product.price.to_s(:delimited) %>円</p>
         <p>数量：<%= order_product.quantity %></p>
