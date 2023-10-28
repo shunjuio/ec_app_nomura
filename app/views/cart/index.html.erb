@@ -5,7 +5,7 @@
     <div class="item">
       <% @index += 1 %>
       <p><%= @index %></p>
-      <img src="<%= "/product_images/#{cart.product.image_path} "%>" alt="商品画像">
+      <%= image_tag cart.product.image_path, alt: "商品画像" %>
       <p><%= cart.product.name %></p>
       <p><%= cart.product.price.to_s(:delimited) %>円</p>
       <p>数量：<%= cart.quantity %></p>
