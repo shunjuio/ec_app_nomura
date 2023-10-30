@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  before_action :authenticate_member!
   def index
     @carts = Cart.where(member_id: current_member.id).includes(:product)
     @index = 0
@@ -31,4 +32,5 @@ class CartController < ApplicationController
     cart.destroy
     redirect_to("/cart/index")
   end
+
 end

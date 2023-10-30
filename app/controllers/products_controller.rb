@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @member = Member.find_by(id: current_member.id)
+    @member = Member.find_by(id: current_member.id) unless current_member.nil?
     # @member[:last_name] = "test"
   end
 
