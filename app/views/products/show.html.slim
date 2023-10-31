@@ -1,0 +1,40 @@
+p#notice
+  = notice
+.show-item
+  .item-img
+    = image_tag @product.image_path, alt: "商品画像"
+  .item-detail
+    p
+      strong
+        | 商品名：
+      = @product.name
+    p
+      strong
+        | 産地：
+      = @product.product_area
+    p
+      strong
+        | 種類：
+      = @product.material
+    p
+      strong
+        | アルコール度数：
+      = @product.alcohol
+    p
+      strong
+        | 価格：
+      = @product.price.to_formatted_s(:delimited)
+      | 円
+    label[for=""]
+      | 数量
+    = form_with(url: "/cart/create") do |form|
+      = form.number_field :quantity, value: 1, min: 1
+      = form.hidden_field :product_id, value: @product.id
+      - if session[:member_id]
+        = form.hidden_field :member_id, value: session[:member_id]
+      = form.submit "カートに入れる"
+- # 管理者ログインのみ表示するようにする？
+- # <%= link_to 'Edit', edit_product_path(@product)
+- # <%= link_to 'Back', products_path
+.back-btn
+  = link_to 'Back', root_path

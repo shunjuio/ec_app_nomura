@@ -1,0 +1,30 @@
+= form_with(model: order) do |form|
+  - if order.errors.any?
+    #error_explanation
+      h2
+        = pluralize(order.errors.count, "error")
+        |  prohibited this order from being saved:
+    ul
+      - order.errors.each do |error|
+        li
+          = error.full_message
+  .field
+    = form.label :member_id
+    = form.number_field :member_id
+  .field
+    = form.label :postage
+    = form.number_field :postage
+  .field
+    = form.label :amount_billed
+    = form.number_field :amount_billed
+  .field
+    = form.label :payment_method
+    = form.number_field :payment_method
+  .field
+    = form.label :shipping_address
+    = form.text_field :shipping_address
+  .field
+    = form.label :postal_code
+    = form.number_field :postal_code
+  .actions
+    = form.submit

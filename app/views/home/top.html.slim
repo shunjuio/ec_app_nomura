@@ -1,0 +1,36 @@
+.top-page
+  h1
+    | whisky shop
+  p
+    | whisky販売専門のECサイトです
+.main-area
+  .aside
+    ul.sort-list
+      li
+        = link_to("種類で探す", "#")
+      li
+        = link_to("産地で探す", "#")
+      li
+        = link_to("価格帯で探す", "#")
+  .product
+    h2
+      | 商品一覧
+    .item-list
+      - @products.each do |product|
+        = link_to("/products/#{product.id}") do
+          .item
+            = image_tag product.image_path, alt: "商品画像"
+          p
+            = product.name
+          p
+            | 産地：
+            = product.product_area
+          p
+            | 種類：
+            = product.material
+          p
+            | アルコール度数：
+            = product.alcohol
+          p
+            = product.price.to_formatted_s(:delimited)
+            | 円

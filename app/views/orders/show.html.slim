@@ -1,0 +1,69 @@
+.order-complete
+  h1
+    | ご注文完了
+  p.buy-date
+    = @order.created_at.strftime('%Y/%m/%d(%a)')
+  p
+    = @member.last_name
+    | 様
+  p#notice
+    = notice
+  p.title
+    | ご注文内容
+  .order-list
+    - @order_products.each do |order_product|
+      .item
+        - @index += 1
+      p
+        = @index
+      = image_tag order_product.product.image_path, alt: "商品画像"
+      p
+        = order_product.product.name
+      p
+        = order_product.product.price.to_formatted_s(:delimited)
+        | 円
+      p
+        | 数量：
+        = order_product.quantity
+      p
+        | 小計：
+        = (order_product.product.price * order_product.quantity).to_formatted_s(:delimited)
+        | 円
+.payment-info
+  p
+    strong
+      | 送料:
+    = @order.postage
+    |  円 
+  p
+    strong
+      | ご請求額:
+    = @order.amount_billed.to_formatted_s(:delimited)
+    |  円 
+  p
+    strong
+      | 決済方法:
+    - if @order.payment_method == 1
+      |  クレジットカード 
+    - elsif @order.payment_method == 2
+      |  電子マネー 
+    - elsif @order.payment_method == 3
+      |  代金引換 
+    - elsif @order.payment_method == 4
+      |  請求書払 
+.shipping
+  p
+    strong
+      | 配送先住所
+  p
+    | 〒 : 
+    = @order.postal_code.to_formatted_s.insert(3, "-")
+  p
+    = @order.shipping_address
+.delivary-date
+  p
+    strong
+      | お届け予定日：
+    = @order.created_at.since(5.days).strftime('%Y/%m/%d(%a)')
+.back-btn
+  = link_to('Back', root_path)

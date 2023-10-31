@@ -1,0 +1,94 @@
+.order
+  h1
+    | 注文確認
+  = form_with(model: @order, url: "/orders/create") do |form|
+    .purchaser
+      h2
+        | 注文者情報
+    .field
+      = form.hidden_field :member_id, value: @member.id
+    .purchaser-name
+
+    .field
+      = form.label :purchaser_last_name, "姓："
+      = form.text_field :purchaser_last_name, value: @member.last_name
+    .field
+      = form.label :purchaser_first_name, "名："
+      = form.text_field :purchaser_first_name, value: @member.first_name
+.field
+  = form.label :purchaser_email, "email："
+  = form.text_field :purchaser_email, value: @member.email
+.shipping
+  h2
+    | 配送先
+  .field
+    = form.label :postal_code, "〒："
+    = form.number_field :postal_code, class: "postal-code"
+  .field
+    = form.label :shipping_address, "住所："
+    = form.text_field :shipping_address
+.payment
+  h2
+    | 決済方法
+  ul.field
+    li
+      = form.radio_button :payment_method, 1
+      = form.label :payment_method, "クレジットカード"
+    li
+      = form.radio_button :payment_method, 2
+      = form.label :payment_method, "電子マネー"
+    li
+      = form.radio_button :payment_method, 3
+      = form.label :payment_method, "代金引換"
+    li
+      = form.radio_button :payment_method, 4
+      = form.label :payment_method, "請求書払"
+.ordered_product
+  h2
+    | 注文商品
+  .cart-list
+    - @carts.each do |cart|
+      .item
+        - @index += 1
+      p
+        = @index
+      - # product_idをparams変数に格納
+      = form.hidden_field :product_id, value: cart.product.id
+      = image_tag cart.product.image_path, alt: "商品画像"
+      p
+        = cart.product.name
+      p
+        = cart.product.price.to_formatted_s(:delimited)
+        | 円
+      p
+        | 数量：
+        = cart.quantity
+      p
+        | 小計：
+        = (cart.product.price * cart.quantity).to_formatted_s(:delimited)
+        | 円
+  .total-price
+    p
+      | 合計数量：
+      = @total_quantity
+      |  個
+    p
+      | 合計金額：
+      = @total_price.to_formatted_s(:delimited)
+      |  円
+.postage
+  h2
+    | 送料: 500円（一律）
+  .field
+    = form.hidden_field :postage, value: @postage
+.amount-billed
+  h2
+    | 請求額: 
+    = @amount_billed.to_formatted_s(:delimited)
+    |  円
+  .field
+    = form.hidden_field :amount_billed, value: @amount_billed
+.actions
+  = form.submit "購入確定"
+.back-btn
+  = link_to 'Back', "/cart/index"
