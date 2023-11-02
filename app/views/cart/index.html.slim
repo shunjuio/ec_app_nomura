@@ -4,32 +4,32 @@ h1.cart-title
   - @carts.each do |cart|
     .item
       - @index += 1
+      p
+        = @index
+        = image_tag cart.product.image_path, alt: "商品画像"
+      p
+        = cart.product.name
+      p
+        = cart.product.price.to_formatted_s(:delimited)
+        | 円
+      p
+        | 数量：
+        = cart.quantity
+      p
+        | 小計：
+        = (cart.product.price * cart.quantity).to_formatted_s(:delimited)
+        | 円
+      button
+        = link_to("削除", "/cart/#{cart.member_id}/#{cart.product_id}/destroy", {method: :post})
+  .total-price
     p
-      = @index
-    = image_tag cart.product.image_path, alt: "商品画像"
+      | 合計数量：
+      = @total_quantity
+      |  個
     p
-      = cart.product.name
-    p
-      = cart.product.price.to_formatted_s(:delimited)
-      | 円
-    p
-      | 数量：
-      = cart.quantity
-    p
-      | 小計：
-      = (cart.product.price * cart.quantity).to_formatted_s(:delimited)
-      | 円
-    button
-      = link_to("削除", "/cart/#{cart.member_id}/#{cart.product_id}/destroy", {method: :post})
-.total-price
-  p
-    | 合計数量：
-    = @total_quantity
-    |  個
-  p
-    | 合計金額：
-    = @total_price.to_formatted_s(:delimited)
-    |  円
+      | 合計金額：
+      = @total_price.to_formatted_s(:delimited)
+      |  円
 .buy-btn
   button
     = link_to('購入手続きへ進む', "/orders/new")
