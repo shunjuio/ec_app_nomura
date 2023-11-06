@@ -70,4 +70,5 @@ end
 group :development, :test do
   gem "ruby-debug-ide"
   gem "debase", "~> 0.2.5.beta2"
+  gem "rspec-rails", "~> 6.0.0"
 end
