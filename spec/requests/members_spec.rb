@@ -60,7 +60,7 @@ RSpec.describe "Members", type: :request do
     end
   end
 
-  describe "ユーザーログイン/ログアウト" do
+  describe "ユーザーログイン" do
     let(:member) { create(:member) }
     let(:email) { member.email }
     let(:password) { member.password }
@@ -103,6 +103,23 @@ RSpec.describe "Members", type: :request do
         expect(response).to have_http_status(:success)
         expect(flash[:danger]).to eq "Incorrect email or password"
       end
+    end
+  end
+
+  describe "ユーザーログアウト" do
+    let(:member) { create(:member) }
+    let(:email) { member.email }
+    let(:password) { member.password }
+    let(:member_params) { { email: email, password: password } }
+
+    before do
+      post members_login_path, params: member_params
+      post members_logout_path
+    end
+
+    it "ログアウトができる" do
+      expect(response).to have_http_status(:found)
+      expect(session[:member_id]).to eq nil
     end
   end
 end
