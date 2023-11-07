@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "members/login" => "members#login"
-  post "members/login" => "members#login"
+  post "members/login" => "members#session_create"
   post "members/logout" => "members#logout"
   get "cart/index"
   post "cart/create" => "cart#create"

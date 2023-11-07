@@ -22,11 +22,20 @@ class MembersController < ApplicationController
 
   # login/logout
   def login
-    @member = Member.find_by(email: params[:email], password: params[:password])
-    if @member
-      session[:member_id] = @member.id
-      redirect_to root_path #あとでマイページへ変える
+  end
+
+  def session_create
+    email = params[:email]
+    password = params[:password]
+
+    unless email.present? && password.present?
+      flash.now[:danger] = "Incorrect email or password"
+      render :login and return
     end
+
+    @member = Member.find_by(email: email, password: password)
+    session[:member_id] = @member.id
+    redirect_to root_path #あとでマイページへ変える
   end
 
   def logout

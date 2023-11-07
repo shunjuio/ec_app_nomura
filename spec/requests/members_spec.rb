@@ -59,4 +59,50 @@ RSpec.describe "Members", type: :request do
       end
     end
   end
+
+  describe "ユーザーログイン/ログアウト" do
+    let(:member) { create(:member) }
+    let(:email) { member.email }
+    let(:password) { member.password }
+    let(:member_params) { { email: email, password: password } }
+
+    before do
+      post members_login_path, params: member_params
+    end
+
+    context "email,passwordを入力した場合" do
+      it "ログインができる" do
+        expect(response).to have_http_status(:found)
+        expect(session[:member_id]).to eq member.id
+      end
+    end
+
+    context "emailが無い場合" do
+      let(:email) { nil }
+
+      it "ログインができない" do
+        expect(response).to have_http_status(:success)
+        expect(flash[:danger]).to eq "Incorrect email or password"
+      end
+    end
+
+    context "passwordが無い場合" do
+      let(:password) { nil }
+
+      it "ログインができない" do
+        expect(response).to have_http_status(:success)
+        expect(flash[:danger]).to eq "Incorrect email or password"
+      end
+    end
+
+    context "email,passwordが無い場合" do
+      let(:email) { nil }
+      let(:password) { nil }
+
+      it "ログインができない" do
+        expect(response).to have_http_status(:success)
+        expect(flash[:danger]).to eq "Incorrect email or password"
+      end
+    end
+  end
 end
