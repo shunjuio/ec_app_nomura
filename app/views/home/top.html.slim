@@ -17,7 +17,7 @@
       | 商品一覧
     .item-list
       - @products.each do |product|
-        = link_to("/products/#{product.id}") do
+        = link_to("/products/#{product.id}", id: "product#{product.id}") do
           .item
             = image_tag product.image_path, alt: "商品画像"
           p
