@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "Products", type: :system do
+  let(:product) { create(:product) }
 
   before do
     driven_by(:rack_test)
   end
 
   describe "商品詳細ページ" do
-    let(:product) { create(:product) }
-
     it "商品詳細ページが表示される" do
       visit product_path(product)
       expect(page).to have_button "カートに入れる"
@@ -16,10 +15,7 @@ RSpec.describe "Products", type: :system do
   end
 
   describe "カートに商品を入れる" do
-    let(:product) { create(:product) }
     let(:member) { create(:member) }
-    let(:email) { member.email }
-    let(:password) { member.password }
     let(:cart) { build(:cart) }
 
     before do
