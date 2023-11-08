@@ -4,10 +4,10 @@ header
       h1
         = link_to("whisky", root_path)
     ul.list
-      - if session[:member_id]
+      - if current_member
         li
           | ようこそ
-          = @member[:last_name]
+          = current_member.last_name
           | 様
         li
           = link_to("mypage", "/members/#{current_member.id}/edit")

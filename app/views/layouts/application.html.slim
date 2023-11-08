@@ -11,6 +11,8 @@ html
   body
     = render 'layouts/header'
     .container
-      = notice .notice
-      = alert .alert
+      p.notice
+        = notice
+      p.alert
+        = alert
       = yield
