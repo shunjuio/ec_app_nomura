@@ -23,10 +23,7 @@ RSpec.describe "Products", type: :system do
     let(:cart) { build(:cart) }
 
     before do
-      visit members_login_path
-      fill_in "email", with: email
-      fill_in "password", with: password
-      find('input[name="commit"]').click
+      sign_in member
     end
 
     it "カートに商品が入る" do

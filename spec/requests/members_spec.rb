@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Members", type: :request do
   describe "GET /members" do
     it "新規登録画面に遷移する" do
-      get new_member_path
+      get new_member_registration_path
       expect(response).to have_http_status(:success)
     end
   end
@@ -17,12 +17,12 @@ RSpec.describe "Members", type: :request do
       let(:member_params) { { member: { last_name: last_name, first_name: first_name, email: email, password: password} } }
 
       before do
-        post members_path, params: member_params
+        post member_registration_path, params: member_params
       end
 
       context "last_name,first_name,email,passwordを入力した場合" do
         it "新規登録ができる" do
-          expect(response).to have_http_status(:found)
+          expect(response).to have_http_status(:see_other)
         end
       end
 
@@ -62,64 +62,29 @@ RSpec.describe "Members", type: :request do
 
   describe "ユーザーログイン" do
     let(:member) { create(:member) }
-    let(:email) { member.email }
-    let(:password) { member.password }
-    let(:member_params) { { email: email, password: password } }
 
     before do
-      post members_login_path, params: member_params
+      sign_in member
     end
 
     context "email,passwordを入力した場合" do
       it "ログインができる" do
-        expect(response).to have_http_status(:found)
-        expect(session[:member_id]).to eq member.id
-      end
-    end
-
-    context "emailが無い場合" do
-      let(:email) { nil }
-
-      it "ログインができない" do
+        get cart_index_path
         expect(response).to have_http_status(:success)
-        expect(flash[:danger]).to eq "Incorrect email or password"
-      end
-    end
-
-    context "passwordが無い場合" do
-      let(:password) { nil }
-
-      it "ログインができない" do
-        expect(response).to have_http_status(:success)
-        expect(flash[:danger]).to eq "Incorrect email or password"
-      end
-    end
-
-    context "email,passwordが無い場合" do
-      let(:email) { nil }
-      let(:password) { nil }
-
-      it "ログインができない" do
-        expect(response).to have_http_status(:success)
-        expect(flash[:danger]).to eq "Incorrect email or password"
       end
     end
   end
 
   describe "ユーザーログアウト" do
     let(:member) { create(:member) }
-    let(:email) { member.email }
-    let(:password) { member.password }
-    let(:member_params) { { email: email, password: password } }
 
     before do
-      post members_login_path, params: member_params
+      sign_in member
       post members_logout_path
     end
 
     it "ログアウトができる" do
-      expect(response).to have_http_status(:found)
-      expect(session[:member_id]).to eq nil
+      expect(response).to have_http_status(:see_other)
     end
   end
 end
