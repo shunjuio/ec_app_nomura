@@ -5,26 +5,26 @@ h2
   = render "members/shared/error_messages", resource: resource
   .field
     = f.label :last_name
-  br
-  = f.text_field :last_name, autofocus: true, autocomplete: "last_name"
+    br
+    = f.text_field :last_name, autofocus: true, autocomplete: "last_name"
   .field
     = f.label :first_name
-  br
-  = f.text_field :first_name, autocomplete: "first_name"
+    br
+    = f.text_field :first_name, autocomplete: "first_name"
   .field
     = f.label :email
-  br
-  = f.email_field :email, autocomplete: "email"
+    br
+    = f.email_field :email, autocomplete: "email"
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div
-      | Currently waiting confirmation for: 
+      | Currently waiting confirmation for:
       = resource.unconfirmed_email
   .field
     = f.label :password
     i
       | (leave blank if you don't want to change it)
-  br
-  = f.password_field :password, autocomplete: "new-password"
+    br
+    = f.password_field :password, autocomplete: "new-password"
   - if @minimum_password_length
     br
     em
@@ -32,14 +32,14 @@ h2
       |  characters minimum
   .field
     = f.label :password_confirmation
-  br
-  = f.password_field :password_confirmation, autocomplete: "new-password"
+    br
+    = f.password_field :password_confirmation, autocomplete: "new-password"
   .field
     = f.label :current_password
     i
       | (we need your current password to confirm your changes)
-  br
-  = f.password_field :current_password, autocomplete: "current-password"
+    br
+    = f.password_field :current_password, autocomplete: "current-password"
   .actions
     = f.submit "Update"
 h3
