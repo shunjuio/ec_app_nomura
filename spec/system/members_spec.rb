@@ -47,7 +47,77 @@ RSpec.describe "Members", type: :system do
           fill_in "Password confirmation", with: ""
           have_button "Sign up"
           expect { click_button "Sign up" }.to change(Member, :count).by(0)
+          expect(current_path).to eq member_registration_path
           expect(page).to have_text "4 errors prohibited this member from being saved:"
+        end
+      end
+    end
+
+    describe "ユーザーログインページ" do
+      let(:member) { create(:member) }
+
+      before do
+        visit root_path
+      end
+
+      it "ログインページに遷移できる" do
+        have_text "login"
+        click_link "login"
+        expect(current_path).to eq members_login_path
+      end
+
+      describe "ユーザーログイン" do
+        before do
+          visit members_login_path
+        end
+
+        context "email,passwordを正しく入力した場合"  do
+          it "ログインができる" do
+            have_field "Email"
+            fill_in "Email", with: member.email
+            fill_in "Password", with: member.password
+            have_button "Log in"
+            click_button "Log in"
+            expect{ member.reload }.to change{ member.sign_in_count }.by(1)
+            expect(current_path).to eq root_path
+            expect(page).to have_text "ようこそhoge様"
+          end
+        end
+
+        context "emailを間違えた場合" do
+          it "ログインができない" do
+            fill_in "Email", with: "wrong_email"
+            fill_in "Password", with: member.password
+            have_button "Log in"
+            click_button "Log in"
+            expect{ member.reload }.to change{ member.sign_in_count }.by(0)
+            expect(current_path).to eq new_member_session_path
+            expect(page).to have_text "Invalid Email or password."
+          end
+        end
+
+        context "passwordを間違えた場合" do
+          it "ログインができない" do
+            fill_in "Email", with: member.email
+            fill_in "Password", with: "wrong_password"
+            have_button "Log in"
+            click_button "Log in"
+            expect{ member.reload }.to change{ member.sign_in_count }.by(0)
+            expect(current_path).to eq new_member_session_path
+            expect(page).to have_text "Invalid Email or password."
+          end
+        end
+
+        context "email,passwordを入力しなかった場合" do
+          it "ログインができない" do
+            fill_in "Email", with: ""
+            fill_in "Password", with: ""
+            have_button "Log in"
+            click_button "Log in"
+            expect{ member.reload }.to change{ member.sign_in_count }.by(0)
+            expect(current_path).to eq new_member_session_path
+            expect(page).to have_text "Invalid Email or password."
+          end
         end
       end
     end
