@@ -123,6 +123,23 @@ RSpec.describe "Members", type: :system do
     end
   end
 
+  describe "ユーザーログアウト" do
+    let(:member) { create(:member) }
+
+    before do
+      sign_in member
+      visit root_path
+    end
+
+    it "ログアウトができる" do
+      have_text "logout"
+      click_link "logout"
+      expect(current_path).to eq root_path
+      expect(page).to have_text "login"
+      expect(page).to have_no_text "ようこそhoge様"
+    end
+  end
+
   describe "ユーザー編集ページ" do
     let(:member) { create(:member) }
     let(:last_name) { "fuga2" }
