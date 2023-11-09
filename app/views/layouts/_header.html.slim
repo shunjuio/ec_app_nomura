@@ -10,7 +10,7 @@ header
           = current_member.last_name
           | 様
         li
-          = link_to("mypage", "/members/#{current_member.id}/edit")
+          = link_to("mypage", edit_member_registration_path)
         li
           = link_to("cart", "/cart/index")
         li
