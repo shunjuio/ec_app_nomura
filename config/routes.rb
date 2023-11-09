@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   devise_scope :member do
     get "members/login" => "members/sessions#new"
     get "members/new" => "members/registrations#new"
-    # get "members/:id/edit" => "members/registrations#edit"
     post "members/logout" => "members/sessions#destroy"
   end
 end
