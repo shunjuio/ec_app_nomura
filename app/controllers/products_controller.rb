@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    binding.pry
     @member = Member.find_by(id: current_member.id) unless current_member.nil?
   end
 
