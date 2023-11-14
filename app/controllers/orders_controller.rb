@@ -1,22 +1,23 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :authenticate_member!
 
   # GET /orders or /orders.json
   def index
     @orders = Order.all
-    @member = Member.find_by(id: session[:member_id])
+    @member = Member.find_by(id: current_member.id)
   end
 
   # GET /orders/1 or /orders/1.json
   def show
-    @member = Member.find_by(id: session[:member_id])
+    @member = Member.find_by(id: current_member.id)
     @order_products = OrderProduct.where(order_id: @order.id).includes(:product)
     @index = 0
   end
 
   # GET /orders/new
   def new
-    @member = Member.find_by(id: session[:member_id])
+    @member = Member.find_by(id: current_member.id)
     @carts = Cart.where(member_id: @member[:id]).includes(:product)
     @index = 0
     total_prices = @carts.map do |cart|
@@ -31,13 +32,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
-    @member = Member.find_by(id: session[:member_id])
+    @member = Member.find_by(id: current_member.id)
   end
 
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-    @member = Member.find_by(id: session[:member_id])
+    @member = Member.find_by(id: current_member.id)
     @carts = Cart.where(member_id: @member[:id]).includes(:product)
 
     respond_to do |format|
