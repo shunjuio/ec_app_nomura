@@ -21,6 +21,7 @@ group :development, :test do
   gem "faker", "~> 3.2"
   gem "ruby-debug-ide"
   gem "debase", "~> 0.2.5.beta2"
+  gem "pry-byebug", "~> 3.10"
 end
 
 group :development do
