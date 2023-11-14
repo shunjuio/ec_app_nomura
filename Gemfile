@@ -19,8 +19,6 @@ gem "devise", ">= 4.9"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "faker", "~> 3.2"
-  gem "ruby-debug-ide"
-  gem "debase", "~> 0.2.5.beta2"
   gem "pry-byebug", "~> 3.10"
 end
 
