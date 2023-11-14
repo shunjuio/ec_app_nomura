@@ -64,16 +64,16 @@
 <!--            <img src="<%#= "/product_images/#{cart.product.image_path} "%>" alt="商品画像">-->
             <%= image_tag cart.product.image_path, alt: "商品画像" %>
             <p><%= cart.product.name %></p>
-            <p><%= cart.product.price.to_formatted_s(:delimited) %>円</p>
+            <p><%= cart.product.price.to_fs(:delimited) %>円</p>
             <p>数量：<%= cart.quantity %></p>
-            <p>小計：<%= (cart.product.price * cart.quantity).to_formatted_s(:delimited) %>円</p>
+            <p>小計：<%= (cart.product.price * cart.quantity).to_fs(:delimited) %>円</p>
           </div>
         <% end %>
 
         <div class="total-price">
           <p>合計数量：<%= @total_quantity %>
             個</p>
-          <p>合計金額：<%= @total_price.to_formatted_s(:delimited) %>
+          <p>合計金額：<%= @total_price.to_fs(:delimited) %>
             円</p>
         </div>
       </div>
@@ -88,7 +88,7 @@
 
     <div class="amount-billed">
       <h2>請求額:
-        <%= @amount_billed.to_formatted_s(:delimited) %>
+        <%= @amount_billed.to_fs(:delimited) %>
         円</h2>
       <div class="field">
         <%= form.hidden_field :amount_billed, value: @amount_billed %>

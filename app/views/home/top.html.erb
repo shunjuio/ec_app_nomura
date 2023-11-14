@@ -22,7 +22,7 @@
             <p>産地：<%= product.product_area %></p>
             <p>種類：<%= product.material %></p>
             <p>アルコール度数：<%= product.alcohol %></p>
-            <p><%= product.price.to_formatted_s(:delimited) %>円</p>
+            <p><%= product.price.to_fs(:delimited) %>円</p>
           </div>
         <% end %>
       <% end %>
