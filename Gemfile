@@ -20,7 +20,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "faker", "~> 3.2"
   gem "pry-byebug", "~> 3.10"
-gem "pry-rails"
+  gem "pry-rails", "~> 0.3.9"
 end
 
 group :development do
