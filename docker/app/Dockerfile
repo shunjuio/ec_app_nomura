@@ -1,5 +1,5 @@
 # [Choice] Ruby version: 2.7, 3.0, 3.1
-ARG RUBY_VERSION=2.7.6
+ARG RUBY_VERSION=3.2.2
 FROM ruby:${RUBY_VERSION}-bullseye
 
 ENV BUNDLE_APP_CONFIG=/workspace/.bundle

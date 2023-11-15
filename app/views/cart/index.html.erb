@@ -7,9 +7,9 @@
       <p><%= @index %></p>
       <%= image_tag cart.product.image_path, alt: "商品画像" %>
       <p><%= cart.product.name %></p>
-      <p><%= cart.product.price.to_s(:delimited) %>円</p>
+      <p><%= cart.product.price.to_fs(:delimited) %>円</p>
       <p>数量：<%= cart.quantity %></p>
-      <p>小計：<%= (cart.product.price * cart.quantity).to_s(:delimited) %>円</p>
+      <p>小計：<%= (cart.product.price * cart.quantity).to_fs(:delimited) %>円</p>
       <button><%= link_to("削除", "/cart/#{cart.member_id}/#{cart.product_id}/destroy", {method: :post}) %></button>
     </div>
   <% end %>
@@ -17,7 +17,7 @@
   <div class="total-price">
     <p>合計数量：<%= @total_quantity %>
       個</p>
-    <p>合計金額：<%= @total_price.to_s(:delimited) %>
+    <p>合計金額：<%= @total_price.to_fs(:delimited) %>
       円</p>
   </div>
 </div>

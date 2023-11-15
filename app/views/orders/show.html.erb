@@ -18,9 +18,9 @@
 <!--        >-->
         <%= image_tag order_product.product.image_path, alt: "商品画像" %>
         <p><%= order_product.product.name %></p>
-        <p><%= order_product.product.price.to_s(:delimited) %>円</p>
+        <p><%= order_product.product.price.to_fs(:delimited) %>円</p>
         <p>数量：<%= order_product.quantity %></p>
-        <p>小計：<%= (order_product.product.price * order_product.quantity).to_s(:delimited) %>円</p>
+        <p>小計：<%= (order_product.product.price * order_product.quantity).to_fs(:delimited) %>円</p>
       </div>
     <% end %>
   </div>
@@ -33,7 +33,7 @@
 
     <p>
       <strong>ご請求額:</strong>
-      <%= @order.amount_billed.to_s(:delimited) %> 円
+      <%= @order.amount_billed.to_fs(:delimited) %> 円
     </p>
 
     <p>
@@ -52,7 +52,7 @@
 
   <div class="shipping">
     <p><strong>配送先住所</strong></p>
-    <p>〒 : <%= @order.postal_code.to_s.insert(3, "-") %></p>
+    <p>〒 : <%= @order.postal_code.to_fs.insert(3, "-") %></p>
     <p><%= @order.shipping_address %></p>
   </div>
 

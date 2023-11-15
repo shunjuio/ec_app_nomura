@@ -14,6 +14,8 @@ services:
       - node-module-volume:/workspace/node_modules
     depends_on:
       - postgres
+    stdin_open: true
+    tty: true
     command: bash -c 'bin/setup && bin/rails s -b 0.0.0.0'
   webpacker:
     <<: *app
