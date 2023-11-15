@@ -58,14 +58,14 @@
             p
               = cart.product.name
             p
-              = cart.product.price.to_formatted_s(:delimited)
+              = cart.product.price.to_fs(:delimited)
               | 円
             p
               | 数量：
               = cart.quantity
             p
               | 小計：
-              = (cart.product.price * cart.quantity).to_formatted_s(:delimited)
+              = (cart.product.price * cart.quantity).to_fs(:delimited)
               | 円
       .total-price
         p
@@ -74,7 +74,7 @@
           |  個
         p
           | 合計金額：
-          = @total_price.to_formatted_s(:delimited)
+          = @total_price.to_fs(:delimited)
           |  円
     .postage
       h2
@@ -84,7 +84,7 @@
     .amount-billed
       h2
         | 請求額:
-        = @amount_billed.to_formatted_s(:delimited)
+        = @amount_billed.to_fs(:delimited)
         |  円
       .field
         = form.hidden_field :amount_billed, value: @amount_billed

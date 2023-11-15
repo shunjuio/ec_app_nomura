@@ -23,7 +23,7 @@ p#notice
     p
       strong
         | 価格：
-      = @product.price.to_formatted_s(:delimited)
+      = @product.price.to_fs(:delimited)
       | 円
     label[for=""]
       | 数量

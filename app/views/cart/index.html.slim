@@ -10,14 +10,14 @@ h1.cart-title
       p
         = cart.product.name
       p
-        = cart.product.price.to_formatted_s(:delimited)
+        = cart.product.price.to_fs(:delimited)
         | 円
       p
         | 数量：
         = cart.quantity
       p
         | 小計：
-        = (cart.product.price * cart.quantity).to_formatted_s(:delimited)
+        = (cart.product.price * cart.quantity).to_fs(:delimited)
         | 円
       button
         = link_to("削除", "/cart/#{cart.member_id}/#{cart.product_id}/destroy", {method: :post})
@@ -28,7 +28,7 @@ h1.cart-title
       |  個
     p
       | 合計金額：
-      = @total_price.to_formatted_s(:delimited)
+      = @total_price.to_fs(:delimited)
       |  円
 .buy-btn
   button
