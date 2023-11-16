@@ -21,6 +21,9 @@ group :development, :test do
   gem "faker", "~> 3.2"
   gem "pry-byebug", "~> 3.10"
   gem "pry-rails", "~> 0.3.9"
+  gem "rubocop", "~> 1.57.2", require: false
+  gem "rubocop-rails", "~> 2.22.0", require: false
+  gem "rubocop-rspec", "~> 2.25.0", require: false
 end
 
 group :development do
