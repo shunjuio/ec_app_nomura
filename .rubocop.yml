@@ -3,4 +3,43 @@ require:
   - rubocop-rspec
   - rubocop-capybara
 
-inherit_from: .rubocop_todo.yml
+AllCops:
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - db/schema.rb
+    - db/migrate/20220701114436_add_column_to_order.rb
+    - db/migrate/20231025093204_add_devise_to_members.rb
+    - test/**/*
+    - vendor/**/*
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Lint/UselessMethodDefinition:
+    Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+    Enabled: false
+
+Style/StringLiterals:
+    Enabled: false
+
+Style/ClassAndModuleChildren:
+    Enabled: false
+
+Layout/LineLength:
+  Max: 256
+  Enabled: false

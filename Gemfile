@@ -4,20 +4,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.2"
 
 gem "rails", "7.1.1"
+
+gem "bootsnap", ">= 1.4.4", require: false
+gem "devise", ">= 4.9"
+gem "jbuilder", "~> 2.7"
 gem "pg", "~> 1.1"
 gem "puma", "~> 6.0"
 gem "sass-rails", ">= 6"
-gem "webpacker", "~> 5.0"
 gem "turbolinks", "~> 5"
-gem "jbuilder", "~> 2.7"
+gem "webpacker", "~> 5.0"
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
-gem "bootsnap", ">= 1.4.4", require: false
-gem "devise", ">= 4.9"
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "faker", "~> 3.2"
   gem "pry-byebug", "~> 3.10"
   gem "pry-rails", "~> 0.3.9"
@@ -27,12 +28,12 @@ group :development, :test do
 end
 
 group :development do
-  gem "web-console", ">= 4.1.0"
-  gem "listen", "~> 3.3"
-  gem "spring", "3.0.0"
-  gem "solargraph"
   gem "erb-formatter"
+  gem "listen", "~> 3.3"
   gem "rufo"
+  gem "solargraph"
+  gem "spring", "3.0.0"
+  gem "web-console", ">= 4.1.0"
 end
 
 group :test do
@@ -41,4 +42,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]

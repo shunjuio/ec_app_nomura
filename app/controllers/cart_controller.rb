@@ -32,5 +32,4 @@ class CartController < ApplicationController
     cart.destroy
     redirect_to("/cart/index")
   end
-
 end
