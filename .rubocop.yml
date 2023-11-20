@@ -3,6 +3,10 @@ require:
   - rubocop-rspec
   - rubocop-capybara
 
+#bin,config,schemaは自分で記述したコード以外は触らない方がいいと思ったので除外
+#migrationファイルはすでにmasterにマージされているので除外
+#testはrspecを使いテスト実行しているので除外
+#vendorは対象にするとgem読み込み時にエラーが出るので除外
 AllCops:
   Exclude:
     - bin/**/*
@@ -13,33 +17,44 @@ AllCops:
     - test/**/*
     - vendor/**/*
 
+#Metricsに関して、今回はrubocopの設定をメインに行い、リファクタリングを考慮しないで行なったので除外。今後リファクタリングする場合は設定を変更する
 Metrics/AbcSize:
   Enabled: false
 
 Metrics/MethodLength:
   Enabled: false
 
+#devise導入時に自動生成されるコードに対して違反の指摘をしているので除外
 Lint/UselessMethodDefinition:
-    Enabled: false
+  Enabled: false
 
+#対象コードが区切りとは関係ないコードのため除外
 Style/NumericLiterals:
   Enabled: false
 
+#adminの管理画面は実装されておらず、現状では必要。今後実装する場合は設定を変更する
 Style/EmptyMethod:
   Enabled: false
 
+#rubocopの設定をメイン行なったので、今回はクラスに関する内容も除外
 Style/Documentation:
   Enabled: false
 
+#rubocopの設定をメイン行なったので、コメントに関する内容も除外。今後リファクタリングする中で必要であれば設定を変更する
 Style/FrozenStringLiteralComment:
-    Enabled: false
+  Enabled: false
 
+#ダブルクォーテーションとシングルクォーテーションでは調べた限りどちらでも問題ないとなっていたので、今回はダブルクォーテーションを採用
 Style/StringLiterals:
-    Enabled: false
+  Enabled: true
+  EnforcedStyle: double_quotes
 
+#rubocopの設定をメイン行なったので、今回はクラスに関する内容も除外
 Style/ClassAndModuleChildren:
-    Enabled: false
+  Enabled: false
 
+#今回はrubocopの設定をメインに行い、リファクタリングを考慮しないで行なったので除外。今後リファクタリングする場合は設定を変更する
 Layout/LineLength:
   Max: 256
   Enabled: false
+
