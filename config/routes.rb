@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get "cart/index"
   post "cart/create" => "cart#create"
   post "cart/:member_id/:product_id/destroy" => "cart#destroy"
