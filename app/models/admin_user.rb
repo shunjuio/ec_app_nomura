@@ -5,6 +5,6 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "email", "encrypted_password", "id", "id_value", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
+    ["id", "id_value", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at"]
   end
 end

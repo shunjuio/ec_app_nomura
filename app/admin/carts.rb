@@ -1,18 +1,12 @@
 ActiveAdmin.register Cart do
+  permit_params :product_id, :member_id, :quantity
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :product_id, :member_id, :quantity
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:product_id, :member_id, :quantity]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  form do |f|
+    f.inputs do
+      f.input :product_id, as: :select, collection: Product.all.map{|p| ["#{p.name}", p.id]}
+      f.input :member_id, as: :select, collection: Member.all.map{|m| ["#{m.email}", m.id]}
+      f.input :quantity
+    end
+    f.actions
+  end
 end

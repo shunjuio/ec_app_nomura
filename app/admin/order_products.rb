@@ -1,18 +1,12 @@
 ActiveAdmin.register OrderProduct do
+  permit_params :product_id, :order_id, :quantity
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :product_id, :order_id, :quantity
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:product_id, :order_id, :quantity]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  form do |f|
+    f.inputs do
+      f.input :product_id, as: :select, collection: Product.all.map{|p| ["#{p.name}", p.id]}
+      f.input :order_id, as: :select, collection: Order.all.map{|o| ["#{o.id}", o.id]}
+      f.input :quantity
+    end
+    f.actions
+  end
 end
