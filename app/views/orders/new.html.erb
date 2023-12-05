@@ -1,3 +1,6 @@
+<!--このページのみJSを読み込むため-->
+<%= javascript_pack_tag "post_code" %>
+
 <div class="order">
 
   <h1>注文確認</h1>
@@ -29,7 +32,9 @@
       <h2>配送先</h2>
       <div class="field">
         <%= form.label :postal_code, "〒：" %>
-        <%= form.number_field :postal_code, class: "postal-code" %>
+<!--        number_fieldでも"-"が入力できるので、text_fieldに変更して"-"ありでも検索できるようにした-->
+        <%= form.text_field :postal_code, class: "postal-code" %>
+        <%= button_tag "住所検索", id: "search_address", type: "button" %>
       </div>
 
       <div class="field">
