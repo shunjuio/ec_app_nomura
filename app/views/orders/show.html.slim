@@ -27,7 +27,7 @@
           = order_product.quantity
         p
           | 小計：
-          = (order_product.product.price * order_product.quantity).to_f_s(:delimited)
+          = (order_product.product.price * order_product.quantity).to_fs(:delimited)
           | 円
   .payment-info
     p

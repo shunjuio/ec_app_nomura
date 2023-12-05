@@ -33,8 +33,5 @@ p#notice
       - if current_member
         = form.hidden_field :member_id, value: current_member.id
       = form.submit "カートに入れる"
-- # 管理者ログインのみ表示するようにする？
-- # <%= link_to 'Edit', edit_product_path(@product)
-- # <%= link_to 'Back', products_path
 .back-btn
   = link_to 'Back', root_path

@@ -20,17 +20,18 @@
         = link_to("/products/#{product.id}") do
           .item
             = image_tag product.image_path, alt: "商品画像"
-          p
-            = product.name
-          p
-            | 産地：
-            = product.product_area
-          p
-            | 種類：
-            = product.material
-          p
-            | アルコール度数：
-            = product.alcohol
-          p
-            = product.price.to_fs(:delimited)
-            | 円
+            p
+              = product.name
+            p
+              | 産地：
+              = product.product_area
+            p
+              | 種類：
+              = product.material
+            p
+              | アルコール度数：
+              = product.alcohol
+            p
+              | 価格：
+              = product.price.to_fs(:delimited)
+              | 円
