@@ -11,6 +11,7 @@ gem "jbuilder", "~> 2.7"
 gem "pg", "~> 1.1"
 gem "puma", "~> 6.0"
 gem "sass-rails", ">= 6"
+gem "slim-rails", "~> 3.6.3"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.0"
 # gem 'redis', '~> 4.0'
@@ -29,6 +30,7 @@ end
 
 group :development do
   gem "erb-formatter"
+  gem "html2slim-ruby3", "~> 0.2.1"
   gem "listen", "~> 3.3"
   gem "rufo"
   gem "solargraph"

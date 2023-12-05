@@ -119,6 +119,9 @@ GEM
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hpricot (0.8.6)
+    html2slim-ruby3 (0.2.1)
+      hpricot
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -288,6 +291,13 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    slim (5.1.1)
+      temple (~> 0.10.0)
+      tilt (>= 2.1.0)
+    slim-rails (3.6.3)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 6.0, != 5.0.0)
     solargraph (0.49.0)
       backport (~> 1.2)
       benchmark
@@ -315,6 +325,7 @@ GEM
     stringio (3.0.8)
     syntax_tree (6.2.0)
       prettier_print (>= 1.2.0)
+    temple (0.10.3)
     thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.0)
@@ -361,6 +372,7 @@ DEPENDENCIES
   devise (>= 4.9)
   erb-formatter
   faker (~> 3.2)
+  html2slim-ruby3 (~> 0.2.1)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
@@ -374,6 +386,7 @@ DEPENDENCIES
   rufo
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
+  slim-rails (~> 3.6.3)
   solargraph
   spring (= 3.0.0)
   turbolinks (~> 5)
