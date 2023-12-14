@@ -20,14 +20,14 @@
         p
           = order_product.product.name
         p
-          = order_product.product.price.to_formatted_s(:delimited)
+          = order_product.product.price.to_fs(:delimited)
           | 円
         p
           | 数量：
           = order_product.quantity
         p
           | 小計：
-          = (order_product.product.price * order_product.quantity).to_formatted_s(:delimited)
+          = (order_product.product.price * order_product.quantity).to_fs(:delimited)
           | 円
   .payment-info
     p
@@ -38,7 +38,7 @@
     p
       strong
         | ご請求額:
-      = @order.amount_billed.to_formatted_s(:delimited)
+      = @order.amount_billed.to_fs(:delimited)
       |  円
     p
       strong
@@ -57,7 +57,7 @@
         | 配送先住所
     p
       | 〒 :
-      = @order.postal_code.to_formatted_s.insert(3, "-")
+      = @order.postal_code.to_fs.insert(3, "-")
     p
       = @order.shipping_address
   .delivary-date
