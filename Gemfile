@@ -14,6 +14,7 @@ gem "jbuilder", "~> 2.7"
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 gem "bootsnap", ">= 1.4.4", require: false
+gem "slim-rails", "~> 3.6.3"
 gem "devise", ">= 4.9"
 gem "activeadmin", ">=3.1"
 
@@ -31,6 +32,7 @@ group :development do
   gem "solargraph"
   gem "erb-formatter"
   gem "rufo"
+  gem "html2slim-ruby3", "~> 0.2.1"
 end
 
 group :test do
