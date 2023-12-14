@@ -1,0 +1,23 @@
+header
+  .header-container
+    .logo
+      h1
+        = link_to("whisky", root_path)
+    ul.list
+      - if current_member
+        li
+          | ようこそ
+          = current_member.last_name
+          | 様
+        li
+          = link_to("mypage", "/members/#{current_member.id}/edit")
+        li
+          = link_to("cart", "/cart/index")
+        li
+          = link_to("logout", "/members/logout", {method: :post})
+      - else
+        li
+          = link_to("signup", "/members/new")
+        li
+          = link_to("login", "/members/login")
+        - # <li><%= link_to("cart", "/cart/index")
