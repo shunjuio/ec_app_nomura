@@ -11,8 +11,15 @@ html
       | 様
 
     p
-      | この度はご注文いただきありがとうございます。
-      | whisky shop がお客様のご注文を承ったことをお知らせいたします。
+      | いつもご利用いただき、誠にありがとうございます。お客様のご注文が無事確定しました。
+    p
+      | 【注文詳細】
+    p
+      | 注文日時:
+      = l @order.order_date_time
+
+    p
+      | 【商品詳細】
       - @order_products.each do |order_product|
         p
           | 商品名：
@@ -25,5 +32,40 @@ html
           | 数量：
           = order_product.quantity
           | 個
+        p
+          | 小計：
+          = (order_product.product.price * order_product.quantity).to_fs(:delimited)
+          | 円
     p
-      | 商品が発送されましたら、Eメールにてお知らせいたします。
+      | 【お支払い総額】
+    p
+      = @order.amount_billed.to_fs(:delimited)
+      | 円
+    p
+      | 【お支払い方法】
+    p
+      | 支払い方法:
+      = @order.payment_method
+    p
+      |【お届け先】
+    p
+      | 配送先:
+    p
+      | 〒
+      = @order.postal_code.to_fs.insert(3, "-")
+    p
+      = @order.shipping_address
+
+    p
+      | ご注文いただいた商品は、迅速かつ安全にお届けいたします。発送の際には、別途メールにてお知らせいたしますので、ご確認ください。
+
+        何かご質問や変更がある場合は、お気軽に弊社カスタマーサポートまでお知らせください。
+
+        今後とも、whisky shop をご愛顧賜りますようお願い申し上げます。
+
+        誠にありがとうございます。
+
+    p
+      | whisky shop カスタマーサポート
+    p
+      | 000-0000-0000
