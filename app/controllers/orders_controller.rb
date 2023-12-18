@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
           cart.destroy
         end
 
-        OrderCompletionMailer.order_completion_mail(current_member, @order).deliver_now
+        OrderCompletionMailer.order_completion_mail(current_member, @order).deliver_now if OrderProduct.where(order_id: @order.id).present?
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
