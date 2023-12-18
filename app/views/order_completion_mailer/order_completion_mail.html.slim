@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+
+  body
+    h3
+      | ご注文の確認
+    h3
+      = @member.last_name
+      | 様
+
+    p
+      | この度はご注文いただきありがとうございます。
+      | whisky shop がお客様のご注文を承ったことをお知らせいたします。
+      - @order_products.each do |order_product|
+        p
+          | 商品名：
+          = order_product.product.name
+        p
+          | 価格：
+          = order_product.product.price.to_fs(:delimited)
+          | 円
+        p
+          | 数量：
+          = order_product.quantity
+          | 個
+    p
+      | 商品が発送されましたら、Eメールにてお知らせいたします。

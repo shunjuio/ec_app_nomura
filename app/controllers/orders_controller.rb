@@ -51,6 +51,8 @@ class OrdersController < ApplicationController
           @order_product.save
           cart.destroy
         end
+
+        OrderCompletionMailer.order_completion_mail(current_member, @order).deliver_now
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
