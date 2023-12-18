@@ -24,12 +24,12 @@ class CartController < ApplicationController
       cart = Cart.new(quantity: params[:quantity], product_id: params[:product_id], member_id: params[:member_id])
       cart.save
     end
-    redirect_to("/cart/index")
+    redirect_to('/cart/index')
   end
 
   def destroy
     cart = Cart.find_by(member_id: params[:member_id], product_id: params[:product_id])
     cart.destroy
-    redirect_to("/cart/index")
+    redirect_to('/cart/index')
   end
 end

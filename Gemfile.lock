@@ -264,6 +264,9 @@ GEM
       rubocop (~> 1.41)
     rubocop-factory_bot (2.24.0)
       rubocop (~> 1.33)
+    rubocop-performance (1.19.1)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     rubocop-rails (2.22.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -381,6 +384,8 @@ DEPENDENCIES
   puma (~> 6.0)
   rails (= 7.1.1)
   rubocop (~> 1.57.2)
+  rubocop-capybara (~> 2.19)
+  rubocop-performance (~> 1.19, >= 1.19.1)
   rubocop-rails (~> 2.22.0)
   rubocop-rspec (~> 2.25.0)
   rufo
