@@ -48,7 +48,10 @@ RSpec.describe "Members", type: :system do
           have_button "Sign up"
           expect { click_button "Sign up" }.to change(Member, :count).by(0)
           expect(current_path).to eq member_registration_path
-          expect(page).to have_text "4 errors prohibited this member from being saved:"
+          expect(page).to have_text "Email が未入力です"
+          expect(page).to have_text "Password が未入力です"
+          expect(page).to have_text "First name が未入力です"
+          expect(page).to have_text "Last name が未入力です"
         end
       end
     end
@@ -93,7 +96,7 @@ RSpec.describe "Members", type: :system do
           click_button "Log in"
           expect{ member.reload }.to change{ member.sign_in_count }.by(0)
           expect(current_path).to eq new_member_session_path
-          expect(page).to have_text "Invalid Email or password."
+          expect(page).to have_text "Emailまたはパスワードが違います。"
         end
       end
 
@@ -105,7 +108,7 @@ RSpec.describe "Members", type: :system do
           click_button "Log in"
           expect{ member.reload }.to change{ member.sign_in_count }.by(0)
           expect(current_path).to eq new_member_session_path
-          expect(page).to have_text "Invalid Email or password."
+          expect(page).to have_text "Emailまたはパスワードが違います。"
         end
       end
 
@@ -117,7 +120,7 @@ RSpec.describe "Members", type: :system do
           click_button "Log in"
           expect{ member.reload }.to change{ member.sign_in_count }.by(0)
           expect(current_path).to eq new_member_session_path
-          expect(page).to have_text "Invalid Email or password."
+          expect(page).to have_text "Emailまたはパスワードが違います。"
         end
       end
     end
@@ -200,7 +203,11 @@ RSpec.describe "Members", type: :system do
           have_button "Update"
           click_button "Update"
           expect(current_path).to eq member_registration_path
-          expect(page).to have_text "5 errors prohibited this member from being saved:"
+          expect(page).to have_text "Email が未入力です"
+          expect(page).to have_text "Password が未入力です"
+          expect(page).to have_text "First name が未入力です"
+          expect(page).to have_text "Last name が未入力です"
+          expect(page).to have_text "Current password が未入力です"
         end
       end
     end

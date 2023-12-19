@@ -29,7 +29,7 @@ RSpec.describe "Orders", type: :system do
       expect{ click_button "購入確定" }.to change { Order.count }.by(1).and change { OrderProduct.count }.by(1)
       expect(current_path).to eq order_path(Order.last)
       expect(page).to have_text "ご注文完了"
-      expect(page).to have_text "Thank you for your purchase!"
+      expect(page).to have_text(I18n.t('orders.create'))
     end
   end
 end
