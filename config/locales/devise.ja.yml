@@ -17,5 +17,5 @@ ja:
 
   devise:
     failure:
-      invalid: "%{authentication_keys}またはパスワードが違います。"
+      invalid: "%{authentication_keys}またはパスワードが未入力です"
       not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
