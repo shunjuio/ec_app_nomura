@@ -15,9 +15,9 @@ RSpec.describe 'Orders' do
       sign_in member
       visit product_path(product)
       have_text 'カートに入れる'
-      click_button 'カートに入れる'
+      click_link_or_button 'カートに入れる'
       have_text '購入手続きへ進む'
-      click_link '購入手続きへ進む'
+      click_on '購入手続きへ進む'
     end
 
     it '商品の購入ができる' do
@@ -26,7 +26,7 @@ RSpec.describe 'Orders' do
       fill_in 'order_shipping_address', with: order.shipping_address
       find_by_id('order_payment_method_1').click
       have_text '購入確定'
-      expect { click_button '購入確定' }.to change(Order, :count).by(1).and change(OrderProduct, :count).by(1)
+      expect { click_on '購入確定' }.to change(Order, :count).by(1).and change(OrderProduct, :count).by(1)
       expect(page).to have_current_path order_path(Order.last), ignore_query: true
       expect(page).to have_text 'ご注文完了'
       expect(page).to have_text(I18n.t('orders.create'))

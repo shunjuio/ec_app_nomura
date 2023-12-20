@@ -16,7 +16,7 @@ RSpec.describe 'Products' do
     end
 
     it '商品詳細ページが表示される' do
-      click_link '響'
+      click_on '響'
       expect(page).to have_current_path product_path(product), ignore_query: true
       expect(page).to have_button 'カートに入れる'
     end

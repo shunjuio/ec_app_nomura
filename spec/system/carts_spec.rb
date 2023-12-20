@@ -15,19 +15,19 @@ RSpec.describe 'Carts' do
       visit product_path(product)
       fill_in 'quantity', with: cart.quantity
       have_text 'カートに入れる'
-      click_button 'カートに入れる'
+      click_on 'カートに入れる'
     end
 
     it 'カートの中身が削除できる' do
       have_text '削除'
-      expect { click_link '削除' }.to change(Cart, :count).by(-1)
+      expect { click_on '削除' }.to change(Cart, :count).by(-1)
       expect(page).to have_current_path cart_index_path, ignore_query: true
       expect(page).not_to have_text '削除'
     end
 
     it '注文確認画面に進める' do
       have_text '購入手続きへ進む'
-      click_link '購入手続きへ進む'
+      click_on '購入手続きへ進む'
       expect(page).to have_current_path new_order_path, ignore_query: true
       expect(page).to have_text '注文確認'
     end
