@@ -1,0 +1,50 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-capybara
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/webpack*'
+    - 'bin/yarn'
+    - 'bin/spring'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+
+# Top-level class document is self-explanatory and therefore unnecessary.
+Style/Documentation:
+  Enabled: false
+
+# Frozen string literals is default in Ruby 3.0
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# numeric literals without _ between groups of digits in them
+Style/NumericLiterals:
+  MinDigits: 6
+
+# default is 120
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/devise.rb'
+
+# Use the recommended enforced style
+Capybara/ClickLinkOrButtonStyle:
+  EnforcedStyle: link_or_button
+
+# ToDo: MetricsのMax値調整
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/MethodLength:
+  Max: 150
+
+Metrics/BlockLength:
+  Max: 90
+  Exclude:
+    - 'config/environments/development.rb'

@@ -1,0 +1,9 @@
+ja:
+  orders:
+    create: 'ご購入ありがとうございました'
+    update: 'ご購入ありがとうございました'
+    destroy: '注文をキャンセルしました'
+  products:
+    create: '商品情報を登録しました'
+    update: '商品情報を更新しました'
+    destroy: '商品情報を削除しました'
