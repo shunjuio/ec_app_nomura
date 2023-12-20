@@ -48,3 +48,7 @@ Metrics/BlockLength:
   Max: 90
   Exclude:
     - 'config/environments/development.rb'
+
+#expectの数は多いのですが、必要だと思うのでMaxで調整
+RSpec/MultipleExpectations:
+  Max: 6

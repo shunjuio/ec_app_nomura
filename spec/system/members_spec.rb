@@ -18,10 +18,10 @@ RSpec.describe 'Members' do
 
     describe 'ユーザー新規登録' do
       let(:member) { build(:member) }
+      let(:i18n_scope) { 'activerecord.errors.models.member.attributes' }
 
       before do
         visit members_new_path
-        @i18n_scope = 'activerecord.errors.models.member.attributes'
       end
 
       context 'last_name, first_name, email, password, password_confirmationを入力した場合' do
@@ -49,10 +49,10 @@ RSpec.describe 'Members' do
           have_button 'Sign up'
           expect { click_on 'Sign up' }.not_to change(Member, :count)
           expect(page).to have_current_path member_registration_path, ignore_query: true
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.email.blank"))
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.password.blank"))
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.first_name.blank"))
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.last_name.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.email.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.password.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.first_name.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.last_name.blank"))
         end
       end
     end
@@ -60,10 +60,10 @@ RSpec.describe 'Members' do
 
   describe 'ユーザーログインページ' do
     let(:member) { create(:member) }
+    let(:i18n_scope) { 'devise.failure' }
 
     before do
       visit root_path
-      @i18n_scope = 'devise.failure'
     end
 
     it 'ログインページに遷移できる' do
@@ -98,7 +98,7 @@ RSpec.describe 'Members' do
           click_on 'Log in'
           expect { member.reload }.not_to change(member, :sign_in_count)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.not_found_in_database", authentication_keys: 'Email'))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.not_found_in_database", authentication_keys: 'Email'))
         end
       end
 
@@ -110,7 +110,7 @@ RSpec.describe 'Members' do
           click_on 'Log in'
           expect { member.reload }.not_to change(member, :sign_in_count)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.invalid", authentication_keys: 'Email'))
         end
       end
 
@@ -122,7 +122,7 @@ RSpec.describe 'Members' do
           click_on 'Log in'
           expect { member.reload }.not_to change(member, :sign_in_count)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.invalid", authentication_keys: 'Email'))
         end
       end
     end
@@ -153,6 +153,7 @@ RSpec.describe 'Members' do
     let(:password) { 'password' }
     let(:password_confirmation) { 'password' }
     let(:current_password) { 'password' }
+    let(:i18n_scope) { 'activerecord.errors.models.member.attributes' }
 
     before do
       sign_in member
@@ -168,7 +169,6 @@ RSpec.describe 'Members' do
     describe 'ユーザー編集' do
       before do
         visit edit_member_registration_path
-        @i18n_scope = 'activerecord.errors.models.member.attributes'
       end
 
       it 'フォームにcurrent_memberの情報が入っている' do
@@ -208,11 +208,11 @@ RSpec.describe 'Members' do
           have_button 'Update'
           click_on 'Update'
           expect(page).to have_current_path member_registration_path, ignore_query: true
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.email.blank"))
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.password.blank"))
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.first_name.blank"))
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.last_name.blank"))
-          expect(page).to have_text(I18n.t("#{@i18n_scope}.current_password.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.email.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.password.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.first_name.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.last_name.blank"))
+          expect(page).to have_text(I18n.t("#{i18n_scope}.current_password.blank"))
         end
       end
     end
