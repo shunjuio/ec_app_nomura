@@ -14,7 +14,7 @@ RSpec.describe 'Members' do
       let(:first_name) { 'fuga' }
       let(:email) { 'email@example.com' }
       let(:password) { 'password' }
-      let(:member_params) { { member: { last_name: last_name, first_name: first_name, email: email, password: password } } }
+      let(:member_params) { { member: { last_name:, first_name:, email:, password: } } }
 
       before do
         post member_registration_path, params: member_params
