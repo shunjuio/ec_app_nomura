@@ -149,12 +149,6 @@ RSpec.describe 'Members' do
 
   describe 'ユーザー編集ページ' do
     let(:member) { create(:member) }
-    let(:last_name) { 'fuga2' }
-    let(:first_name) { 'hoge2' }
-    let(:email) { 'email2@example.com' }
-    let(:password) { 'password' }
-    let(:password_confirmation) { 'password' }
-    let(:current_password) { 'password' }
 
     before do
       sign_in member

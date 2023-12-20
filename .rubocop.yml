@@ -42,6 +42,11 @@ RSpec/ContextWording:
    AllowedPatterns:
      - 場合$
 
+#ユーザー編集機能では必要なので、member_spec.rbのみ
+RSpec/MultipleMemoizedHelpers:
+  Exclude:
+  - 'spec/system/members_spec.rb'
+
 # ToDo: MetricsのMax値調整
 Metrics/AbcSize:
   Max: 30
