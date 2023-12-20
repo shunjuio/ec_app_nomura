@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Orders', type: :system do
+RSpec.describe 'Orders' do
   before do
     driven_by(:rack_test)
   end

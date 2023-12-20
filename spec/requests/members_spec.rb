@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Members', type: :request do
+RSpec.describe 'Members' do
   describe 'GET /members' do
     it '新規登録画面に遷移する' do
       get new_member_registration_path

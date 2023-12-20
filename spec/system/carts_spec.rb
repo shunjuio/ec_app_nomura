@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Carts', type: :system do
+RSpec.describe 'Carts' do
   before do
     driven_by(:rack_test)
   end
