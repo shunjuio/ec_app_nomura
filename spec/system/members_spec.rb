@@ -13,7 +13,7 @@ RSpec.describe 'Members', type: :system do
     it '新規登録ページに遷移できる' do
       have_text 'signup'
       click_link 'signup'
-      expect(current_path).to eq members_new_path
+      expect(page).to have_current_path members_new_path, ignore_query: true
     end
 
     describe 'ユーザー新規登録' do
@@ -34,7 +34,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password confirmation', with: member.password_confirmation
           have_button 'Sign up'
           expect { click_button 'Sign up' }.to change(Member, :count).by(1)
-          expect(current_path).to eq root_path
+          expect(page).to have_current_path root_path, ignore_query: true
           expect(page).to have_text 'ようこそhoge様'
         end
       end
@@ -48,7 +48,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password confirmation', with: ''
           have_button 'Sign up'
           expect { click_button 'Sign up' }.to change(Member, :count).by(0)
-          expect(current_path).to eq member_registration_path
+          expect(page).to have_current_path member_registration_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.email.blank"))
           expect(page).to have_text(I18n.t("#{@i18n_scope}.password.blank"))
           expect(page).to have_text(I18n.t("#{@i18n_scope}.first_name.blank"))
@@ -69,7 +69,7 @@ RSpec.describe 'Members', type: :system do
     it 'ログインページに遷移できる' do
       have_text 'login'
       click_link 'login'
-      expect(current_path).to eq members_login_path
+      expect(page).to have_current_path members_login_path, ignore_query: true
     end
 
     describe 'ユーザーログイン' do
@@ -85,7 +85,7 @@ RSpec.describe 'Members', type: :system do
           have_button 'Log in'
           click_button 'Log in'
           expect{ member.reload }.to change{ member.sign_in_count }.by(1)
-          expect(current_path).to eq root_path
+          expect(page).to have_current_path root_path, ignore_query: true
           expect(page).to have_text 'ようこそhoge様'
         end
       end
@@ -97,7 +97,7 @@ RSpec.describe 'Members', type: :system do
           have_button 'Log in'
           click_button 'Log in'
           expect{ member.reload }.to change{ member.sign_in_count }.by(0)
-          expect(current_path).to eq new_member_session_path
+          expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.not_found_in_database", authentication_keys: 'Email'))
         end
       end
@@ -109,7 +109,7 @@ RSpec.describe 'Members', type: :system do
           have_button 'Log in'
           click_button 'Log in'
           expect{ member.reload }.to change{ member.sign_in_count }.by(0)
-          expect(current_path).to eq new_member_session_path
+          expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
         end
       end
@@ -121,7 +121,7 @@ RSpec.describe 'Members', type: :system do
           have_button 'Log in'
           click_button 'Log in'
           expect{ member.reload }.to change{ member.sign_in_count }.by(0)
-          expect(current_path).to eq new_member_session_path
+          expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
         end
       end
@@ -139,7 +139,7 @@ RSpec.describe 'Members', type: :system do
     it 'ログアウトができる' do
       have_text 'logout'
       click_link 'logout'
-      expect(current_path).to eq root_path
+      expect(page).to have_current_path root_path, ignore_query: true
       expect(page).to have_text 'login'
       expect(page).to have_no_text 'ようこそhoge様'
     end
@@ -162,7 +162,7 @@ RSpec.describe 'Members', type: :system do
     it '編集ページに遷移できる' do
       have_text 'mypage'
       click_link 'mypage'
-      expect(current_path).to eq edit_member_registration_path
+      expect(page).to have_current_path edit_member_registration_path, ignore_query: true
     end
 
     describe 'ユーザー編集' do
@@ -191,7 +191,7 @@ RSpec.describe 'Members', type: :system do
           expect {member.reload}.to change {member.last_name}.from(member.last_name).to(last_name)
                                .and change {member.first_name}.from(member.first_name).to(first_name)
                                .and change {member.email}.from(member.email).to(email)
-          expect(current_path).to eq root_path
+          expect(page).to have_current_path root_path, ignore_query: true
         end
       end
 
@@ -205,7 +205,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Current password', with: ''
           have_button 'Update'
           click_button 'Update'
-          expect(current_path).to eq member_registration_path
+          expect(page).to have_current_path member_registration_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.email.blank"))
           expect(page).to have_text(I18n.t("#{@i18n_scope}.password.blank"))
           expect(page).to have_text(I18n.t("#{@i18n_scope}.first_name.blank"))
