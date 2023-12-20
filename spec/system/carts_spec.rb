@@ -20,7 +20,7 @@ RSpec.describe 'Carts', type: :system do
 
     it 'カートの中身が削除できる' do
       have_text '削除'
-      expect{ click_link '削除' }.to change { Cart.count }.by(-1)
+      expect{ click_link '削除' }.to change(Cart, :count).by(-1)
       expect(page).to have_current_path cart_index_path, ignore_query: true
       expect(page).to have_no_text '削除'
     end

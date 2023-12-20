@@ -26,7 +26,7 @@ RSpec.describe 'Orders', type: :system do
       fill_in 'order_shipping_address', with: order.shipping_address
       find('#order_payment_method_1').click
       have_text '購入確定'
-      expect{ click_button '購入確定' }.to change { Order.count }.by(1).and change { OrderProduct.count }.by(1)
+      expect{ click_button '購入確定' }.to change(Order, :count).by(1).and change(OrderProduct, :count).by(1)
       expect(page).to have_current_path order_path(Order.last), ignore_query: true
       expect(page).to have_text 'ご注文完了'
       expect(page).to have_text(I18n.t('orders.create'))

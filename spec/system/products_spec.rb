@@ -24,7 +24,7 @@ RSpec.describe 'Products', type: :system do
     it 'カートに商品が入る' do
       visit product_path(product)
       fill_in 'quantity', with: cart.quantity
-      expect{ find('input[name="commit"]').click }.to change { Cart.count }.by(1)
+      expect{ find('input[name="commit"]').click }.to change(Cart, :count).by(1)
       expect(page).to have_current_path cart_index_path, ignore_query: true
       expect(page).to have_button '購入手続きへ進む'
     end
