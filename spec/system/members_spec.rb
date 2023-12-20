@@ -84,7 +84,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: member.password
           have_button 'Log in'
           click_button 'Log in'
-          expect{ member.reload }.to change(member, :sign_in_count).by(1)
+          expect { member.reload }.to change(member, :sign_in_count).by(1)
           expect(page).to have_current_path root_path, ignore_query: true
           expect(page).to have_text 'ようこそhoge様'
         end
@@ -96,7 +96,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: member.password
           have_button 'Log in'
           click_button 'Log in'
-          expect{ member.reload }.to change(member, :sign_in_count).by(0)
+          expect { member.reload }.to change(member, :sign_in_count).by(0)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.not_found_in_database", authentication_keys: 'Email'))
         end
@@ -108,7 +108,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: 'wrong_password'
           have_button 'Log in'
           click_button 'Log in'
-          expect{ member.reload }.to change(member, :sign_in_count).by(0)
+          expect { member.reload }.to change(member, :sign_in_count).by(0)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
         end
@@ -120,7 +120,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: ''
           have_button 'Log in'
           click_button 'Log in'
-          expect{ member.reload }.to change(member, :sign_in_count).by(0)
+          expect { member.reload }.to change(member, :sign_in_count).by(0)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
         end
