@@ -47,7 +47,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: ''
           fill_in 'Password confirmation', with: ''
           have_button 'Sign up'
-          expect { click_button 'Sign up' }.to change(Member, :count).by(0)
+          expect { click_button 'Sign up' }.not_to change(Member, :count)
           expect(page).to have_current_path member_registration_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.email.blank"))
           expect(page).to have_text(I18n.t("#{@i18n_scope}.password.blank"))
@@ -96,7 +96,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: member.password
           have_button 'Log in'
           click_button 'Log in'
-          expect { member.reload }.to change(member, :sign_in_count).by(0)
+          expect { member.reload }.not_to change(member, :sign_in_count)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.not_found_in_database", authentication_keys: 'Email'))
         end
@@ -108,7 +108,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: 'wrong_password'
           have_button 'Log in'
           click_button 'Log in'
-          expect { member.reload }.to change(member, :sign_in_count).by(0)
+          expect { member.reload }.not_to change(member, :sign_in_count)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
         end
@@ -120,7 +120,7 @@ RSpec.describe 'Members', type: :system do
           fill_in 'Password', with: ''
           have_button 'Log in'
           click_button 'Log in'
-          expect { member.reload }.to change(member, :sign_in_count).by(0)
+          expect { member.reload }.not_to change(member, :sign_in_count)
           expect(page).to have_current_path new_member_session_path, ignore_query: true
           expect(page).to have_text(I18n.t("#{@i18n_scope}.invalid", authentication_keys: 'Email'))
         end
