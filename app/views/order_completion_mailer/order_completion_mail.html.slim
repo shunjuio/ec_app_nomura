@@ -35,6 +35,11 @@ html
         = (order_product.product.price * order_product.quantity).to_fs(:delimited)
         | 円
     h4
+      | 【送料】
+    p
+      = @order.postage.to_fs(:delimited)
+      | 円
+    h4
       | 【お支払い総額】
     p
       = @order.amount_billed.to_fs(:delimited)
