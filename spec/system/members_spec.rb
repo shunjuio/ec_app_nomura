@@ -197,8 +197,8 @@ RSpec.describe 'Members' do
         expect do
           member.reload
         end.to change(member, :last_name).to(last_name)
-         .and change(member, :first_name).to(first_name)
-         .and change(member, :email).to(email)
+                                         .and change(member, :first_name).to(first_name)
+                                                                         .and change(member, :email).to(email)
         expect(page).to have_current_path root_path, ignore_query: true
       end
     end
