@@ -37,6 +37,11 @@ Layout/LineLength:
 Capybara/ClickLinkOrButtonStyle:
   EnforcedStyle: link_or_button
 
+#スタイルの中に、"場合"を追加して日本語に対応
+RSpec/ContextWording:
+   AllowedPatterns:
+     - 場合$
+
 # ToDo: MetricsのMax値調整
 Metrics/AbcSize:
   Max: 30
@@ -49,6 +54,9 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/development.rb'
 
-#expectの数は多いのですが、必要だと思うのでMaxで調整
+# ToDo: RSpecのMax値調整
 RSpec/MultipleExpectations:
   Max: 6
+
+RSpec/ExampleLength:
+  Max: 15
