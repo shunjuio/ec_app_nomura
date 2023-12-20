@@ -77,7 +77,7 @@ RSpec.describe 'Members' do
         visit members_login_path
       end
 
-      context 'email,passwordを正しく入力した場合'  do
+      context 'email,passwordを正しく入力した場合' do
         it 'ログインができる' do
           have_field 'Email'
           fill_in 'Email', with: member.email
@@ -141,7 +141,7 @@ RSpec.describe 'Members' do
       click_link 'logout'
       expect(page).to have_current_path root_path, ignore_query: true
       expect(page).to have_text 'login'
-      expect(page).to have_no_text 'ようこそhoge様'
+      expect(page).not_to have_text 'ようこそhoge様'
     end
   end
 
@@ -188,7 +188,7 @@ RSpec.describe 'Members' do
           fill_in 'Current password', with: current_password
           have_button 'Update'
           click_button 'Update'
-          expect {member.reload}.to change(member, :last_name).from(member.last_name).to(last_name)
+          expect { member.reload }.to change(member, :last_name).from(member.last_name).to(last_name)
                                .and change(member, :first_name).from(member.first_name).to(first_name)
                                .and change(member, :email).from(member.email).to(email)
           expect(page).to have_current_path root_path, ignore_query: true

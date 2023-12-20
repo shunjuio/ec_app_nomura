@@ -22,7 +22,7 @@ RSpec.describe 'Carts' do
       have_text '削除'
       expect { click_link '削除' }.to change(Cart, :count).by(-1)
       expect(page).to have_current_path cart_index_path, ignore_query: true
-      expect(page).to have_no_text '削除'
+      expect(page).not_to have_text '削除'
     end
 
     it '注文確認画面に進める' do

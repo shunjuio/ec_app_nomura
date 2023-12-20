@@ -9,12 +9,12 @@ RSpec.describe 'Members' do
   end
 
   describe 'POST /members' do
-    describe 'ユーザー新規登録'  do
+    describe 'ユーザー新規登録' do
       let(:last_name) { 'hoge' }
       let(:first_name) { 'fuga' }
       let(:email) { 'email@example.com' }
       let(:password) { 'password' }
-      let(:member_params) { { member: { last_name: last_name, first_name: first_name, email: email, password: password} } }
+      let(:member_params) { { member: { last_name: last_name, first_name: first_name, email: email, password: password } } }
 
       before do
         post member_registration_path, params: member_params
