@@ -173,9 +173,9 @@ RSpec.describe 'Members' do
 
       it 'フォームにcurrent_memberの情報が入っている' do
         have_text 'Edit Member'
-        expect(find('#member_last_name').value).to eq member.last_name
-        expect(find('#member_first_name').value).to eq member.first_name
-        expect(find('#member_email').value).to eq member.email
+        expect(find_by_id('member_last_name').value).to eq member.last_name
+        expect(find_by_id('member_first_name').value).to eq member.first_name
+        expect(find_by_id('member_email').value).to eq member.email
       end
 
       context 'last_name, first_name, email,passwordを正しく入力した場合' do
