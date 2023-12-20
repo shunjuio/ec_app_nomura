@@ -51,7 +51,6 @@ class OrdersController < ApplicationController
           @order_product.save
           cart.destroy
         end
-
         OrderCompletionMailer.order_completion_mail(current_member, @order).deliver_now if OrderProduct.where(order_id: @order.id).present?
       else
         format.html { render :new, status: :unprocessable_entity }
