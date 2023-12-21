@@ -5,6 +5,7 @@ require:
   - rubocop-rails
   - rubocop-performance
   - rubocop-capybara
+  - rubocop-factory_bot
 
 AllCops:
   NewCops: enable
@@ -37,6 +38,16 @@ Layout/LineLength:
 Capybara/ClickLinkOrButtonStyle:
   EnforcedStyle: link_or_button
 
+#スタイルの中に、"場合"を追加して日本語に対応
+RSpec/ContextWording:
+   AllowedPatterns:
+     - 場合$
+
+#ユーザー編集機能では必要なので、member_spec.rbのみ
+RSpec/MultipleMemoizedHelpers:
+  Exclude:
+  - 'spec/system/members_spec.rb'
+
 # ToDo: MetricsのMax値調整
 Metrics/AbcSize:
   Max: 30
@@ -48,3 +59,10 @@ Metrics/BlockLength:
   Max: 90
   Exclude:
     - 'config/environments/development.rb'
+
+# ToDo: RSpecのMax値調整
+RSpec/MultipleExpectations:
+  Max: 6
+
+RSpec/ExampleLength:
+  Max: 15

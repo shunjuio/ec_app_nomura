@@ -20,11 +20,14 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.2.0'
   gem 'faker', '~> 3.2'
   gem 'pry-byebug', '~> 3.10'
   gem 'pry-rails', '~> 0.3.9'
+  gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', '~> 1.57.2', require: false
   gem 'rubocop-capybara', '~> 2.19', require: false
+  gem 'rubocop-factory_bot', '~> 2.24.0', require: false
   gem 'rubocop-performance', '~> 1.19', '>= 1.19.1', require: false
   gem 'rubocop-rails', '~> 2.22.0', require: false
   gem 'rubocop-rspec', '~> 2.25.0', require: false

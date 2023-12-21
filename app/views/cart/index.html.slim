@@ -19,8 +19,7 @@ h1.cart-title
         | 小計：
         = (cart.product.price * cart.quantity).to_fs(:delimited)
         | 円
-      button
-        = link_to("削除", "/cart/#{cart.member_id}/#{cart.product_id}/destroy", {method: :post})
+      = button_to "削除", "/cart/#{cart.member_id}/#{cart.product_id}/destroy", {method: :post}
   .total-price
     p
       | 合計数量：
@@ -31,7 +30,6 @@ h1.cart-title
       = @total_price.to_fs(:delimited)
       |  円
 .buy-btn
-  button
-    = link_to('購入手続きへ進む', "/orders/new")
+  = button_to '購入手続きへ進む', "/orders/new", {method: :get}
 .back-btn
   = link_to('Back', root_path)
