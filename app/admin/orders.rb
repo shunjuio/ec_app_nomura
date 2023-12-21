@@ -1,5 +1,6 @@
 ActiveAdmin.register Order do
-  permit_params :member_id, :postage, :amount_billed, :payment_method, :shipping_address, :postal_code, :purchaser_last_name, :purchaser_first_name, :purchaser_email
+  permit_params :member_id, :postage, :amount_billed, :payment_method, :shipping_address,
+                :postal_code, :purchaser_last_name, :purchaser_first_name, :purchaser_email
 
   form do |f|
     f.inputs do
