@@ -5,6 +5,7 @@ ruby '3.2.2'
 
 gem 'rails', '7.1.1'
 
+gem 'activeadmin', '>=3.1'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '>= 4.9'
 gem 'jbuilder', '~> 2.7'

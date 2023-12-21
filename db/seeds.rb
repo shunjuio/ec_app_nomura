@@ -52,3 +52,8 @@ products.each do |product|
     product_area: product[:product_area]
   )
 end
+
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end
