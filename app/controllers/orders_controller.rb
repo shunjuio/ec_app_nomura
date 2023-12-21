@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[show edit update destroy]
   before_action :authenticate_member!
 
   # GET /orders or /orders.json
@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to order_url(@order), notice: "ご購入ありがとうございました" }
+        format.html { redirect_to order_url(@order), notice: t('orders.create') }
         format.json { render :show, status: :created, location: @order }
         # order_productへ商品と個数を登録して、cartから商品を削除する処理を書く
         @carts.each do |cart|
@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "ご購入ありがとうございました" }
+        format.html { redirect_to order_url(@order), notice: t('orders.update') }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
+      format.html { redirect_to orders_url, notice: t('orders.destroy') }
       format.json { head :no_content }
     end
   end
@@ -91,6 +91,7 @@ class OrdersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def order_params
-    params[:order].permit(:member_id, :postage, :amount_billed, :payment_method, :shipping_address, :postal_code, :purchaser_last_name, :purchaser_first_name, :purchaser_email).merge(order_date_time: Time.zone.now)
+    params[:order].permit(:member_id, :postage, :amount_billed, :payment_method, :shipping_address, :postal_code,
+                          :purchaser_last_name, :purchaser_first_name, :purchaser_email).merge(order_date_time: Time.zone.now)
   end
 end
