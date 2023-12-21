@@ -10,3 +10,5 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  order_completion_mailer:
+    subject: "ご注文ありがとうございます"

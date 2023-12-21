@@ -39,7 +39,7 @@ Capybara/ClickLinkOrButtonStyle:
 
 # ToDo: MetricsのMax値調整
 Metrics/AbcSize:
-  Max: 30
+  Max: 33
 
 Metrics/MethodLength:
   Max: 150

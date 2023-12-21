@@ -3,6 +3,7 @@ class OrderCompletionMailer < ApplicationMailer
     @order = order
     @member = member
     @order_products = OrderProduct.where(order_id: order.id).includes(:product)
-    mail to: order.member.email, subject: 'Thank you for your order.'
+    mail to: order.member.email,
+         subject: t('order_completion_mailer.subject')
   end
 end
