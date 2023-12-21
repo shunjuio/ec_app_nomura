@@ -4,7 +4,7 @@ ActiveAdmin.register Order do
 
   form do |f|
     f.inputs do
-      f.input :member_id, as: :select, collection: Member.all.map{|m| ["#{m.email}", m.id]}
+      f.input :member_id, as: :select, collection: Member.all.map { |m| ["#{m.email}", m.id] }
       f.input :postage
       f.input :amount_billed
       f.input :payment_method
