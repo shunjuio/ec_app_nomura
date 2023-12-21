@@ -16,5 +16,5 @@ Rails.application.routes.draw do
     get 'members/:id/edit' => 'members/registrations#edit'
     post 'members/logout' => 'members/sessions#destroy'
   end
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
