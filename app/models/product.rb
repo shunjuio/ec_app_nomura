@@ -9,10 +9,10 @@ class Product < ApplicationRecord
   validates :product_area, { presence: true }
 
   def self.ransackable_attributes(auth_object = nil)
-    ["id", "id_value", "name", "price", "alcohol", "image_path", "material", "product_area", "created_at", "updated_at"]
+    ['id', 'id_value', 'name', 'price', 'alcohol', 'image_path', 'material', 'product_area', 'created_at', 'updated_at']
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["carts", "order_products"]
+    ['carts', 'order_products']
   end
 end
