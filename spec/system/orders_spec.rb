@@ -15,7 +15,7 @@ RSpec.describe 'Orders' do
       sign_in member
       visit product_path(product)
       have_text 'カートに入れる'
-      click_link_or_button 'カートに入れる'
+      click_on 'カートに入れる'
       have_text '購入手続きへ進む'
       click_on '購入手続きへ進む'
     end
