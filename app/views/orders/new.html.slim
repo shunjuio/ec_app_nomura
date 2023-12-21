@@ -25,7 +25,7 @@
         | 配送先
       .field
         = form.label :postal_code, "〒："
-        = form.text_field :postal_code, class: "postal-code"
+        = form.text_field :postal_code, class: "postal-code", pattern: "[0-9]{3}-?[0-9]{4}$"
         = button_tag "住所検索", id: "search_address", type: "button"
       .field
         = form.label :shipping_address, "住所："
