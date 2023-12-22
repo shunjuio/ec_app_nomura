@@ -27,7 +27,7 @@ p#notice
       | 円
     label[for=""]
       | 数量
-    = form_with(url: "/cart/create") do |form|
+    = form_with(model: @cart, url: '/cart/create') do |form|
       = form.number_field :quantity, value: 1, min: 1
       = form.hidden_field :product_id, value: @product.id
       - if current_member
