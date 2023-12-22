@@ -6,18 +6,18 @@
       h2
         | 注文者情報
       .field
-        = form.hidden_field :member_id, value: @member.id
+        = form.hidden_field :member_id, value: current_member.id
       .purchaser-name
 
       .field
         = form.label :purchaser_last_name, "姓："
-        = form.text_field :purchaser_last_name, value: @member.last_name
+        = form.text_field :purchaser_last_name, value: current_member.last_name
       .field
         = form.label :purchaser_first_name, "名："
-        = form.text_field :purchaser_first_name, value: @member.first_name
+        = form.text_field :purchaser_first_name, value: current_member.first_name
       .field
         = form.label :purchaser_email, "email："
-        = form.text_field :purchaser_email, value: @member.email
+        = form.text_field :purchaser_email, value: current_member.email
     .shipping
       h2
         | 配送先
@@ -47,11 +47,11 @@
       h2
         | 注文商品
       .cart-list
-        - @carts.each do |cart|
+        - @carts.each_with_index do |cart, index|
           .item
-            - @index += 1
+            - index += 1
             p
-              = @index
+              = index
             - # product_idをparams変数に格納
             = form.hidden_field :product_id, value: cart.product.id
             = image_tag cart.product.image_path, alt: "商品画像"

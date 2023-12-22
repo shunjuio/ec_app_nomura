@@ -4,18 +4,18 @@
   p.buy-date
     = @order.created_at.strftime('%Y/%m/%d(%a)')
   p
-    = @member.last_name
+    = current_member.last_name
     | 様
   p#notice
     = notice
   p.title
     | ご注文内容
   .order-list
-    - @order_products.each do |order_product|
+    - @order_products.each_with_index do |order_product, index|
       .item
-        - @index += 1
+        - index += 1
         p
-          = @index
+          = index
         = image_tag order_product.product.image_path, alt: "商品画像"
         p
           = order_product.product.name
