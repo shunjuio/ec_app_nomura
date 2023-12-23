@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = Order.all
-    @member = Member.find_by(id: current_member.id)
   end
 
   # GET /orders/1 or /orders/1.json
@@ -21,7 +20,7 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  def edit;  end
+  def edit; end
 
   # POST /orders or /orders.json
   def create
