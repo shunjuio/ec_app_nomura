@@ -7,3 +7,8 @@ ja:
     create: '商品情報を登録しました'
     update: '商品情報を更新しました'
     destroy: '商品情報を削除しました'
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+  order_completion_mailer:
+    subject: "ご注文ありがとうございます"

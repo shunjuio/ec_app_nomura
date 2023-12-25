@@ -21,6 +21,7 @@ gem 'webpacker', '~> 5.0'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker', '~> 3.2'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'pry-byebug', '~> 3.10'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop', '~> 1.57.2', require: false

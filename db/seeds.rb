@@ -10,8 +10,8 @@
   split_name = Faker::Name.name.split
 
   Member.create!(
-    last_name: split_name[1],
-    first_name: split_name[0],
+    last_name: split_name[0],
+    first_name: split_name[1],
     email: "email#{n + 1}@example.com",
     password: 'password'
   )

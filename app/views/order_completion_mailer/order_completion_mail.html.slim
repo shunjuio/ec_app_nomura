@@ -1,0 +1,69 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+
+  body
+    h3
+      | ご注文の確認
+    h3
+      = @member.last_name
+      | 様
+
+    p
+      | いつもご利用いただき、誠にありがとうございます。お客様のご注文が無事確定しました。
+    h4
+      | 【注文詳細】
+    p
+      = l @order.order_date_time
+    h4
+      | 【商品詳細】
+    - @order_products.each do |order_product|
+      p
+        | 商品名：
+        = order_product.product.name
+      p
+        | 価格：
+        = order_product.product.price.to_fs(:delimited)
+        | 円
+      p
+        | 数量：
+        = order_product.quantity
+        | 個
+      p
+        | 小計：
+        = (order_product.product.price * order_product.quantity).to_fs(:delimited)
+        | 円
+    h4
+      | 【送料】
+    p
+      = @order.postage.to_fs(:delimited)
+      | 円
+    h4
+      | 【お支払い総額】
+    p
+      = @order.amount_billed.to_fs(:delimited)
+      | 円
+    h4
+      | 【お支払い方法】
+    p
+      = @order.payment_method
+    h4
+      |【お届け先】
+    p
+      | 〒
+      = @order.postal_code.to_fs.insert(3, "-")
+    p
+      = @order.shipping_address
+    p
+      | ご注文いただいた商品は、迅速かつ安全にお届けいたします。発送の際には、別途メールにてお知らせいたしますので、ご確認ください。
+
+        何かご質問や変更がある場合は、お気軽に弊社カスタマーサポートまでお知らせください。
+
+        今後とも、whisky shop をご愛顧賜りますようお願い申し上げます。
+
+        誠にありがとうございます。
+    p
+      | whisky shop カスタマーサポート
+    p
+      | 000-0000-0000

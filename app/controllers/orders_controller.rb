@@ -38,19 +38,18 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-    @member = Member.find_by(id: current_member.id)
-    @carts = Cart.where(member_id: @member[:id]).includes(:product)
+    @carts = Cart.where(member_id: current_member.id).includes(:product)
 
     respond_to do |format|
       if @order.save
         format.html { redirect_to order_url(@order), notice: t('orders.create') }
         format.json { render :show, status: :created, location: @order }
-        # order_productへ商品と個数を登録して、cartから商品を削除する処理を書く
         @carts.each do |cart|
           @order_product = OrderProduct.new(product_id: cart.product_id, order_id: @order.id, quantity: cart.quantity)
           @order_product.save
           cart.destroy
         end
+        send_order_confirmation_email
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -90,7 +89,14 @@ class OrdersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def order_params
-    params[:order].permit(:member_id, :postage, :amount_billed, :payment_method, :shipping_address, :postal_code,
-                          :purchaser_last_name, :purchaser_first_name, :purchaser_email)
+    params[:order].permit(:member_id, :postage, :amount_billed, :payment_method, :shipping_address,
+                          :postal_code, :purchaser_last_name, :purchaser_first_name, :purchaser_email)
+                  .merge(order_date_time: Time.zone.now)
+  end
+
+  def send_order_confirmation_email
+    return if OrderProduct.where(order_id: @order.id).blank?
+
+    OrderCompletionMailer.order_completion_mail(current_member, @order).deliver_now
   end
 end

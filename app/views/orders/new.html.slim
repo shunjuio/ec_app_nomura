@@ -32,16 +32,16 @@
         | 決済方法
       ul.field
         li
-          = form.radio_button :payment_method, 1
+          = form.radio_button :payment_method, "クレジットカード"
           = form.label :payment_method, "クレジットカード"
         li
-          = form.radio_button :payment_method, 2
+          = form.radio_button :payment_method, "電子マネー"
           = form.label :payment_method, "電子マネー"
         li
-          = form.radio_button :payment_method, 3
+          = form.radio_button :payment_method, "代金引換"
           = form.label :payment_method, "代金引換"
         li
-          = form.radio_button :payment_method, 4
+          = form.radio_button :payment_method, "請求書払"
           = form.label :payment_method, "請求書払"
     .ordered_product
       h2
