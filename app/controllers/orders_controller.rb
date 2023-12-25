@@ -49,9 +49,7 @@ class OrdersController < ApplicationController
           @order_product.save
           cart.destroy
         end
-        if OrderProduct.where(order_id: @order.id).present?
-          OrderCompletionMailer.order_completion_mail(current_member, @order).deliver_now
-        end
+        send_purchase_confirmation_email
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -94,5 +92,11 @@ class OrdersController < ApplicationController
     params[:order].permit(:member_id, :postage, :amount_billed, :payment_method, :shipping_address,
                           :postal_code, :purchaser_last_name, :purchaser_first_name, :purchaser_email)
                   .merge(order_date_time: Time.zone.now)
+  end
+
+  def send_purchase_confirmation_email
+    return if OrderProduct.where(order_id: @order.id).blank?
+
+    OrderCompletionMailer.order_completion_mail(current_member, @order).deliver_now
   end
 end
